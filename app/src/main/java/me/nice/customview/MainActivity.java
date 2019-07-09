@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
 
+
                 dialog.setOnRightTitleClickListener(new OnRightTitleClickListener() {
                     @Override
                     public void onClick(View v, NiceDateAndTimePickerDialog dialog, Date date) {
