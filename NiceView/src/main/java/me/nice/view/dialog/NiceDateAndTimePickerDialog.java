@@ -215,7 +215,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     }
 
 
-
     @Override
     public void show() {
         super.show();
