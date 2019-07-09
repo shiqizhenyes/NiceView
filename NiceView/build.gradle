@@ -3,8 +3,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-def siteUrl = 'https://coding.net/u/shiqizhen/p/CustomView/git' // 项目主页。
-def gitUrl = 'https://git.coding.net/shiqizhen/CustomView.git'
+def siteUrl = 'https://github.com/shiqizhenyes/NiceView' // 项目主页。
+def gitUrl = 'https://github.com/shiqizhenyes/NiceView.git'
 
 android {
     compileSdkVersion 28
@@ -66,8 +66,8 @@ artifacts {
     archives sourcesJar
 }
 
-group = "mobi.zack.superblelib"
-version = "1.0.2"
+group = "me.nice.view"
+version = "1.0.0"
 
 install {
     repositories.mavenInstaller {
@@ -110,7 +110,7 @@ install {
 
 
 Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
 bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
@@ -118,12 +118,12 @@ bintray {
     configurations = ['archives']
     pkg {
         //填入 bintray 上对应的 package 信息
-        repo = 'androidOpenSourceLibrary'
+        repo = 'NiceView'
         name = 'NiceView'
-        vcsUrl = 'https://git.coding.net/shiqizhen/CustomView.git'
-        websiteUrl = 'https://coding.net/u/shiqizhen/p/CustomView/git'
+        vcsUrl = 'https://github.com/shiqizhenyes/NiceView.git'
+        websiteUrl = 'https://github.com/shiqizhenyes/NiceView'
         licenses = ['MIT']
-        issueTrackerUrl = 'https://coding.net/u/shiqizhen/p/CustomView/git/issues'
+        issueTrackerUrl = 'https://github.com/shiqizhenyes/NiceView/issues'
         publicDownloadNumbers = true
         version {
             name = '1.0.0'

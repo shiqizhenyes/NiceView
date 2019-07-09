@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 NiceDateAndTimePickerDialog.Builder builder = new NiceDateAndTimePickerDialog.Builder();
                 builder.init(this, R.layout.nice_date_and_time_picker_dialog_layout, R.id.niceDateAndTimePicker)
 //                        .displayDaysOfMonth()
+                        .hideTopLayout()
                         .displayDays()
                         .displayHours()
                         .displayMinutes()

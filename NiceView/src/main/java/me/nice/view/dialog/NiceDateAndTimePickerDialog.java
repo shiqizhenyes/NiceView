@@ -39,6 +39,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
 
     private BottomSheetDialog niceDateAndTimePickerBottomDialog;
+    private View rootView;
 
     private NiceDateAndTimePickerDialog() { }
 
@@ -206,6 +207,15 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     private boolean show = false;
 
 
+    public View getView(int id) {
+        if (rootView != null) {
+            return rootView.findViewById(id);
+        }
+        return null;
+    }
+
+
+
     @Override
     public void show() {
         super.show();
@@ -216,7 +226,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
                 if (contextWeakReference.get() != null) {
 
                     niceDateAndTimePickerBottomDialog = new BottomSheetDialog(contextWeakReference.get());
-                    View rootView = LayoutInflater.from(contextWeakReference.get()).inflate(dialogLayout, null);
+                    rootView = LayoutInflater.from(contextWeakReference.get()).inflate(dialogLayout, null);
                     niceDateAndTimePicker = rootView.findViewById(niceDateAndTimePickerId);
 
                     niceDateAndTimePicker.setDisplayTopLayout(displayTopLayout);
