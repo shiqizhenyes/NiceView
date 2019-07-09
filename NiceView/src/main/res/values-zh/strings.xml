@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">奈斯</string>
+
+    <string name="default_text">-</string>
+    <string name="now">现在</string>
+    <string name="picker_today">今天</string>
+    <string name="picker_am">上午</string>
+    <string name="picker_pm">下午</string>
+    <string name="tomorrow">明天</string>
+    <string name="the_day_after_tomorrow">后天</string>
+
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+
+    <string name="title">标题</string>
+
+</resources>

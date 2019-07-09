@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/niceBottomRootLayout"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/niceDateAndTimePickerTopLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp">
+
+        <Button
+            android:id="@+id/niceDateAndTimePickerTopLeftButton"
+            style="@style/BorderlessButton"
+            android:text="@string/cancel"/>
+
+
+        <TextView
+            android:id="@+id/niceDateAndTimePickerTopCenterTitle"
+            style="@style/CenterTitle"
+            android:text="@string/title"
+            android:layout_centerInParent="true"/>
+
+
+        <Button
+            android:id="@+id/niceDateAndTimePickerTopRightButton"
+            style="@style/BorderlessButton"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/confirm" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="230dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <!--<me.nice.view.widget.NiceWheelYearPicker-->
+                <!--android:id="@+id/niceDateAndTimePickerYearPicker"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:visibility="gone"-->
+                <!--app:nice_wheel_atmospheric="true"-->
+                <!--app:nice_wheel_item_align="center"-->
+                <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
+                <!--app:nice_wheel_visible_item_count="4"/>-->
+
+            <!--<me.nice.view.widget.NiceWheelMonthPicker-->
+                <!--android:id="@+id/niceDateAndTimePickerMonthPicker"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:visibility="gone"-->
+                <!--app:nice_wheel_atmospheric="true"-->
+                <!--app:nice_wheel_item_align="center"-->
+                <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
+                <!--app:nice_wheel_visible_item_count="4"/>-->
+
+            <!--<me.nice.view.widget.NiceWheelDayOfMonthPicker-->
+                <!--android:id="@+id/niceDateAndTimePickerDayOfMonthPicker"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:visibility="gone"-->
+                <!--app:nice_wheel_atmospheric="true"-->
+                <!--app:nice_wheel_item_align="right"-->
+                <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
+                <!--app:nice_wheel_visible_item_count="4"/>-->
+
+            <me.nice.view.widget.NiceWheelDayPicker
+                android:id="@+id/niceDateAndTimePickerDayPicker"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:nice_wheel_atmospheric="true"
+                app:nice_wheel_item_align="center"
+                app:nice_wheel_item_space="@dimen/wheel_spacing"
+                app:nice_wheel_visible_item_count="4" />
+
+            <me.nice.view.widget.NiceWheelHourPicker
+                android:id="@+id/niceDateAndTimePickerHourPicker"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:nice_wheel_atmospheric="true"
+                app:nice_wheel_item_align="center"
+                app:nice_wheel_item_space="@dimen/wheel_spacing"
+                app:nice_wheel_visible_item_count="4"/>
+
+            <me.nice.view.widget.NiceWheelMinutePicker
+                android:id="@+id/niceDateAndTimePickerMinutePicker"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:nice_wheel_atmospheric="true"
+                app:nice_wheel_item_align="center"
+                app:nice_wheel_item_space="@dimen/wheel_spacing"
+                app:nice_wheel_visible_item_count="4"/>
+
+            <!--<me.nice.view.widget.NiceWheelAmPmPicker-->
+                <!--android:id="@+id/niceDateAndTimePickerAmPmPicker"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:visibility="gone"-->
+                <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
+                <!--app:nice_wheel_item_align="center"/>-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/md_grey_430"/>
+
+            <View
+                android:id="@+id/niceDateAndTimePickerSelector"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:alpha="0.2"
+                android:background="@color/g_default_base_transparent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/md_grey_430"/>
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

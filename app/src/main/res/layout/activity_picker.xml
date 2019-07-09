@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PickerActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <me.nice.view.widget.NiceWheelMonthPicker
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_weight="1" />
+
+
+        <me.nice.view.widget.NiceWheelDayPicker
+            android:id="@+id/niceWheelDayPicker"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="300dp" />
+
+        <me.nice.view.widget.NiceWheelDayOfMonthPicker
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="300dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <me.nice.view.widget.NiceWheelHourPicker
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_weight="1"/>
+        
+        <me.nice.view.widget.NiceWheelMinutePicker
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_weight="1"/>
+
+        <me.nice.view.widget.NiceWheelAmPmPicker
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:layout_weight="1"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

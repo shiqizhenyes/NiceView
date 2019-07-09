@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NiceView</string>
+
+    <string name="default_text">-</string>
+
+    <string name="now">Now</string>
+    <string name="picker_today">Today</string>
+    <string name="picker_am">AM</string>
+    <string name="picker_pm">PM</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="the_day_after_tomorrow">Three days later</string>
+
+
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="title">Title</string>
+
+</resources>

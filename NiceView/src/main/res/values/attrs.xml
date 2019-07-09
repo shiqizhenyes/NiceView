@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="NiceCircleTextView">
+
+    </declare-styleable>
+
+    <declare-styleable name="NiceMarkView">
+
+
+    </declare-styleable>
+
+
+    <declare-styleable name="NiceWheelPicker">
+        <attr name="nice_wheel_data" format="reference"/>
+        <attr name="nice_wheel_selected_item_position" format="integer"/>
+        <attr name="nice_wheel_item_text_size" format="dimension"/>
+        <attr name="nice_wheel_item_text_color" format="color"/>
+        <attr name="nice_wheel_selected_item_text_color" format="color"/>
+        <attr name="nice_wheel_same_width" format="boolean"/>
+        <attr name="nice_wheel_maximum_width_text" format="string"/>
+        <attr name="nice_wheel_maximum_width_text_position" format="integer"/>
+        <attr name="nice_wheel_visible_item_count" format="integer"/>
+        <attr name="nice_wheel_item_space" format="dimension"/>
+        <attr name="nice_wheel_cyclic" format="boolean"/>
+        <attr name="nice_wheel_indicator" format="boolean"/>
+        <attr name="nice_wheel_indicator_color" format="color"/>
+        <attr name="nice_wheel_indicator_size" format="dimension"/>
+        <attr name="nice_wheel_curtain" format="boolean"/>
+        <attr name="nice_wheel_curtain_color" format="color"/>
+        <attr name="nice_wheel_atmospheric" format="boolean"/>
+        <attr name="nice_wheel_curved" format="boolean"/>
+        <attr name="nice_wheel_item_align" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+
+
+
+
+
+</resources>
