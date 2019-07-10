@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.annotation.StringRes;
 import android.text.LoginFilter;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
@@ -206,7 +207,6 @@ public class NiceDateAndTimePicker extends LinearLayout {
                         day = name;
                         if (displayNow) {
                             // TODO: 2019/7/8 显示现在
-
                             if (niceWheelDayPicker.getCurrentItemPosition() ==
                                     niceWheelDayPicker.getNowItemPosition()) {
 
@@ -215,8 +215,10 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
                             }else if (niceWheelDayPicker.getCurrentItemPosition() ==
                                     niceWheelDayPicker.getTodayItemPosition()){
+
                                 niceWheelHourPicker.scrollTo(niceWheelHourPicker.findIndexOfDate(minDate));
                                 niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.findIndexOfDate(minDate));
+
                             }else {
                                 niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition() +1);
                                 niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition() +1);
@@ -249,15 +251,13 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
                         if (displayNow) {
                             // TODO: 2019/7/8
-                            if (niceWheelDayPicker.getCurrentItemPosition() ==
-                                    niceWheelDayPicker.getNowItemPosition()) {
+                            if (niceWheelDayPicker.getCurrentItemPosition() == niceWheelDayPicker.getNowItemPosition()) {
                                 niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition());
-                            } else if (niceWheelDayPicker.getCurrentItemPosition() ==
-                                    niceWheelDayPicker.getTodayItemPosition()){
+                            } else if (niceWheelDayPicker.getCurrentItemPosition() == niceWheelDayPicker.getTodayItemPosition()){
                                 if (niceWheelHourPicker.getCurrentItemPosition() == niceWheelHourPicker.getDefaultTextPosition()) {
                                     niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition() + 1);
                                 }
-                                checkMinMaxDate();
+//                                checkMinMaxDate();
                             }else {
                                 if (niceWheelHourPicker.getCurrentItemPosition() == niceWheelHourPicker.getDefaultTextPosition()) {
                                     niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition() + 1);
@@ -277,7 +277,8 @@ public class NiceDateAndTimePicker extends LinearLayout {
                 }
             }
         });
-//
+
+
         niceWheelMinutePicker
                 .setOnMinuteChangedListener(new NiceWheelMinutePicker.OnMinuteChangedListener() {
                     @Override
@@ -290,10 +291,12 @@ public class NiceDateAndTimePicker extends LinearLayout {
                                 niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition());
                             }else if (niceWheelDayPicker.getCurrentItemPosition() ==
                                     niceWheelDayPicker.getTodayItemPosition()){
-                                if (niceWheelMinutePicker.getCurrentItemPosition() == niceWheelMinutePicker.getDefaultTextPosition()) {
-                                    niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition() + 1);
+
+                                if (niceWheelMinutePicker.getCurrentItemPosition() ==
+                                        niceWheelMinutePicker.getDefaultTextPosition()) {
+                                    niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition() + 1);
                                 }
-                                checkMinMaxDate();
+//                                checkMinMaxDate();
                             }else {
                                 if (niceWheelMinutePicker.getCurrentItemPosition() == niceWheelMinutePicker.getDefaultTextPosition()) {
                                     niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition() + 1);
@@ -338,7 +341,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 //    }
 //
 
-    private <T> void checkMinMaxDate() {
+    private void checkMinMaxDate() {
         checkBeforeMinDate();
         checkAfterMaxDate();
     }
@@ -745,10 +748,14 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
     }
 
+
     public void setCenterTitle(String title) {
         niceDateAndTimePickerTopCenterTitle.setText(title);
     }
 
+    public void setCenterTitle(@StringRes int titleId) {
+        niceDateAndTimePickerTopCenterTitle.setText(titleId);
+    }
 
 
 //

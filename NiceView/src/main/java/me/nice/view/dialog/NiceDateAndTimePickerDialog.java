@@ -2,6 +2,7 @@ package me.nice.view.dialog;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.design.widget.BottomSheetDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -37,7 +38,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
     private OnRightTitleClickListener onRightTitleClickListener;
 
-
     private BottomSheetDialog niceDateAndTimePickerBottomDialog;
     private View rootView;
 
@@ -54,73 +54,114 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     private int titleId;
 
 
-    public NiceDateAndTimePickerDialog(int dialogLayout, int niceDateAndTimePickerId) {
+    public NiceDateAndTimePickerDialog(WeakReference<Context> context, int dialogLayout, int niceDateAndTimePickerId) {
+        this.contextWeakReference = context;
         this.dialogLayout = dialogLayout;
         this.niceDateAndTimePickerId = niceDateAndTimePickerId;
+        if (contextWeakReference.get() != null) {
+            rootView = LayoutInflater.from(contextWeakReference.get()).inflate(dialogLayout, null);
+            niceDateAndTimePicker = rootView.findViewById(niceDateAndTimePickerId);
+            niceDateAndTimePicker.getNiceDateAndTimePickerTopLeftButton().setOnClickListener(this);
+            niceDateAndTimePicker.getNiceDateAndTimePickerTopRightButton().setOnClickListener(this);
+        }
     }
 
-    public NiceDateAndTimePickerDialog setContextWeakReference(WeakReference<Context> contextWeakReference) {
-        this.contextWeakReference = contextWeakReference;
-        return this;
-    }
 
     private NiceDateAndTimePickerDialog setStyle(int style) {
         this.style = style;
+
+        if (this.style == BOTTOM_SHEET) {
+            niceDateAndTimePickerBottomDialog = new BottomSheetDialog(contextWeakReference.get());
+        }
+
         return this;
     }
 
     public NiceDateAndTimePickerDialog setMustBeOnFuture(boolean mustBeOnFuture) {
         this.mustBeOnFuture = mustBeOnFuture;
+        if (niceDateAndTimePicker != null) {
+//            niceDateAndTimePicker.setMustBeOnFuture(mustBeOnFuture);
+        }
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog displayTopLayout(boolean display) {
         this.displayTopLayout = display;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDisplayTopLayout(displayTopLayout);
+        }
         return this;
     }
 
     public NiceDateAndTimePickerDialog setTitle(String title) {
         this.title = title;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setCenterTitle(this.title);
+        }
         return this;
     }
 
 
-    public NiceDateAndTimePickerDialog setTitle(int title) {
-        this.titleId = title;
+    public NiceDateAndTimePickerDialog setTitle(@StringRes int titleId) {
+        this.titleId = titleId;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setCenterTitle(this.titleId);
+        }
+
         return this;
     }
 
     public NiceDateAndTimePickerDialog setDisplayNow(boolean displayNow) {
         this.displayNow = displayNow;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDisplayNow(this.displayNow);
+        }
         return this;
     }
 
     public NiceDateAndTimePickerDialog setDisplayTomorrow(boolean displayTomorrow) {
         this.displayTomorrow = displayTomorrow;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDisplayTomorrow(this.displayTomorrow);
+        }
         return this;
     }
 
     public NiceDateAndTimePickerDialog setDisplayTheDayAfterTomorrow(boolean displayTheDayAfterTomorrow) {
         this.displayTheDayAfterTomorrow = displayTheDayAfterTomorrow;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDisplayTheDayAfterTomorrow(this.displayTheDayAfterTomorrow);
+        }
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog setDisplayPrevious(boolean displayPrevious) {
         this.displayPrevious = displayPrevious;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDisplayPrevious(this.displayPrevious);
+        }
+
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog setDisplayFuture(boolean displayFuture) {
         this.displayFuture = displayFuture;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDisplayFuture(this.displayFuture);
+        }
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog displayYears(boolean display) {
         this.displayYears = display;
+        if (niceDateAndTimePicker != null) {
+//            niceDateAndTimePicker.setdis
+        }
+
         return this;
     }
 
@@ -143,6 +184,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
     public NiceDateAndTimePickerDialog displayDays(boolean display) {
         this.displayDays = display;
+
         return this;
     }
 
@@ -164,29 +206,66 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     }
 
 
-
     public NiceDateAndTimePickerDialog setMinDate(Date minDate) {
         this.minDate = minDate;
+
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setMinDate(this.minDate);
+        }
+
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog setMaxDate(Date maxDate) {
         this.maxDate = maxDate;
+
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setMaxDate(this.maxDate);
+        }
+
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog setDefaultDate(Date defaultDate) {
         this.defaultDate = defaultDate;
+
+
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setDefaultDate(this.defaultDate);
+        }
+
         return this;
     }
 
 
     public NiceDateAndTimePickerDialog setMinutesStep(int minutesStep) {
         this.minutesStep = minutesStep;
+
+        if (niceDateAndTimePicker != null) {
+            if (minutesStep <= 0) {
+                minutesStep = STEP_MINUTES_DEFAULT;
+            }
+            niceDateAndTimePicker.setStepMinutes(minutesStep);
+        }
+
         return this;
     }
+
+
+    private boolean curved = true;
+
+
+    public NiceDateAndTimePickerDialog setCurved(boolean curved) {
+        this.curved = curved;
+        if (niceDateAndTimePicker != null) {
+            niceDateAndTimePicker.setCurved(curved);
+        }
+        return this;
+    }
+
+
 
     public NiceDateAndTimePickerDialog setOnDateSelectedListener(OnDateSelectedListener onDateSelectedListener) {
         this.onDateSelectedListener = onDateSelectedListener;
@@ -220,6 +299,9 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     }
 
 
+    /**
+     *
+     */
     @Override
     public void show() {
         super.show();
@@ -228,10 +310,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
             if (contextWeakReference != null) {
 
                 if (contextWeakReference.get() != null) {
-
-                    niceDateAndTimePickerBottomDialog = new BottomSheetDialog(contextWeakReference.get());
-                    rootView = LayoutInflater.from(contextWeakReference.get()).inflate(dialogLayout, null);
-                    niceDateAndTimePicker = rootView.findViewById(niceDateAndTimePickerId);
 
                     niceDateAndTimePicker.setDisplayTopLayout(displayTopLayout);
                     niceDateAndTimePicker.setCurved(curved);
@@ -269,10 +347,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
                     niceDateAndTimePicker.setCenterTitle(title);
 
                     niceDateAndTimePicker.setOnDateSelectedListener(onDateSelectedListener);
-
-                    niceDateAndTimePicker.getNiceDateAndTimePickerTopLeftButton().setOnClickListener(this);
-
-                    niceDateAndTimePicker.getNiceDateAndTimePickerTopRightButton().setOnClickListener(this);
 
 //                    niceDateAndTimePicker.setAmPm(amPm);
 //                    if (curved) {
@@ -329,7 +403,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
         private int style = BOTTOM_SHEET;
 
-        private WeakReference context;
+        private WeakReference<Context> context;
 
         private int dialogLayout;
 
@@ -372,11 +446,10 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
         @Nullable
         private Locale customLocale;
 
-        public Builder init(Context context, int dialogLayout, int pickerId) {
+        public Builder(Context context, int dialogLayout, int pickerId) {
             this.context = new WeakReference<>(context);
             this.dialogLayout = dialogLayout;
             this.pickerId = pickerId;
-            return this;
         }
 
 
@@ -524,8 +597,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
         public NiceDateAndTimePickerDialog Build() {
 
-            return new NiceDateAndTimePickerDialog(dialogLayout, pickerId)
-                    .setContextWeakReference(context)
+            return new NiceDateAndTimePickerDialog(context, dialogLayout, pickerId)
                     .setStyle(style)
                     .setMustBeOnFuture(mustBeOnFuture)
                     .setDisplayNow(displayNow)
@@ -547,7 +619,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
                     .setMaxDate(maxDate)
                     .setMinutesStep(minutesStep)
                     .setTitle(title);
-
         }
 
     }

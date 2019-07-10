@@ -66,8 +66,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 maxCalendar.set(Calendar.HOUR_OF_DAY, 23);
                 maxCalendar.set(Calendar.MINUTE, 55);
 
-                NiceDateAndTimePickerDialog.Builder builder = new NiceDateAndTimePickerDialog.Builder();
-                builder.init(this, R.layout.nice_date_and_time_picker_dialog_layout, R.id.niceDateAndTimePicker)
+                NiceDateAndTimePickerDialog.Builder builder = new NiceDateAndTimePickerDialog
+                        .Builder(this, R.layout.nice_date_and_time_picker_dialog_layout,
+                        R.id.niceDateAndTimePicker);
+
+                builder
 //                        .displayDaysOfMonth()
                         .hideTopLayout()
                         .displayDays()
@@ -77,14 +80,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        .displayFuture()
                         .displayTomorrow()
                         .displayTheDayAfterTomorrow()
-//                        .displayNow()
+                        .displayNow()
 //                        .minutesStep(10)
 //                        .mustBeOnFuture(false)
                         .defaultDate(new Date())
 //                        .()
                         .minDate(new Date())
                         .maxDate(maxCalendar.getTime());
-
 
                 NiceDateAndTimePickerDialog dialog = builder.Build();
 
