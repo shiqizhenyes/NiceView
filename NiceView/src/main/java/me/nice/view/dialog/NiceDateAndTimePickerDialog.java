@@ -190,6 +190,11 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
     public NiceDateAndTimePickerDialog setOnDateSelectedListener(OnDateSelectedListener onDateSelectedListener) {
         this.onDateSelectedListener = onDateSelectedListener;
+
+        if(null != niceDateAndTimePicker) {
+            niceDateAndTimePicker.setOnDateSelectedListener(onDateSelectedListener);
+        }
+
         return this;
     }
 
