@@ -4,6 +4,6 @@ import java.util.Date;
 
 public interface OnDateSelectedListener {
 
-    void onDateSelected(Date date);
+    void onDateSelected(String day, Date date);
 
 }

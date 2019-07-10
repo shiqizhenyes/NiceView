@@ -60,13 +60,14 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
+
 artifacts {
     archives javadocJar
     archives sourcesJar
 }
 
 group = "me.nice.view"
-version = "1.0.2"
+version = "1.0.3"
 
 install {
     repositories.mavenInstaller {
@@ -116,7 +117,6 @@ bintray {
     publish = true
     configurations = ['archives']
     pkg {
-        //填入 bintray 上对应的 package 信息
         repo = 'NiceView'
         name = 'NiceView'
         vcsUrl = 'https://github.com/shiqizhenyes/NiceView.git'
@@ -125,10 +125,17 @@ bintray {
         issueTrackerUrl = 'https://github.com/shiqizhenyes/NiceView/issues'
         publicDownloadNumbers = true
         version {
-            name = '1.0.2'
+            name = '1.0.3'
             desc = 'nice view open source library'
-            vcsTag = '1.0.2'
+            vcsTag = '1.0.3'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
 }
+
+//task buildAndUpload(){
+//
+//    gradlew build
+//    gradlew install
+//
+//}

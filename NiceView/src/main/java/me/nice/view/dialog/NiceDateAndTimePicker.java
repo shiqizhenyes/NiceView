@@ -104,6 +104,8 @@ public class NiceDateAndTimePicker extends LinearLayout {
     @NonNull
     private Date defaultDate;
 
+    private String day;
+
 
     private boolean displayTopLayout = true;
     private boolean displayYears = false;
@@ -193,12 +195,15 @@ public class NiceDateAndTimePicker extends LinearLayout {
 //                    }
 //                });
 
+
         niceWheelDayPicker
                 .setOnDaySelectedListener(new NiceWheelDayPicker.OnDaySelectedListener() {
                     @Override
                     public void onDaySelected(NiceWheelDayPicker picker, int position, String name, Date date) {
 
                         Log.d(TAG, "name  " + name + " date  " + date.toString() + " position " + position);
+
+                        day = name;
                         if (displayNow) {
                             // TODO: 2019/7/8 显示现在
 
@@ -229,7 +234,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
                 Log.d(TAG, "滚动完成 ");
 
                 if (onDateSelectedListener != null) {
-                    onDateSelectedListener.onDateSelected(getDate());
+                    onDateSelectedListener.onDateSelected(day ,getDate());
                 }
 
             }
@@ -268,7 +273,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
             public void onScrollFinished() {
                 Log.d(TAG, "niceWheelHourPicker滚动完成 ");
                 if (onDateSelectedListener != null) {
-                    onDateSelectedListener.onDateSelected(getDate());
+                    onDateSelectedListener.onDateSelected(day ,getDate());
                 }
             }
         });
@@ -305,7 +310,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
                 Log.d(TAG, "niceWheelMinutePicker滚动完成 ");
                 if (onDateSelectedListener != null) {
-                    onDateSelectedListener.onDateSelected(getDate());
+                    onDateSelectedListener.onDateSelected(day, getDate());
                 }
 
             }

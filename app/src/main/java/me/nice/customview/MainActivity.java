@@ -90,9 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 dialog.setOnDateSelectedListener(new OnDateSelectedListener() {
                     @Override
-                    public void onDateSelected(Date date) {
-                        Log.d(TAG, "选择的时间" + date.toString());
+                    public void onDateSelected(String day, Date date) {
+                        Log.d(TAG, day + " 选择的时间 " + date.toString());
                     }
+
                 }).show();
 
 
