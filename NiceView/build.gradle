@@ -66,7 +66,7 @@ artifacts {
 }
 
 group = "me.nice.view"
-version = "1.0.1"
+version = "1.0.2"
 
 install {
     repositories.mavenInstaller {
@@ -125,9 +125,9 @@ bintray {
         issueTrackerUrl = 'https://github.com/shiqizhenyes/NiceView/issues'
         publicDownloadNumbers = true
         version {
-            name = '1.0.1'
+            name = '1.0.2'
             desc = 'nice view open source library'
-            vcsTag = '1.0.1'
+            vcsTag = '1.0.2'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
