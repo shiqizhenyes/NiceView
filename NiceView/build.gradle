@@ -41,6 +41,9 @@ dependencies {
 //    api project(path: ':singledateandtimepicker')
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 
 // 生成jar包的task，不需要修改。
 task sourcesJar(type: Jar) {
@@ -67,7 +70,7 @@ artifacts {
 }
 
 group = "me.nice.view"
-version = "1.0.3"
+version = "1.0.4"
 
 install {
     repositories.mavenInstaller {
@@ -125,17 +128,10 @@ bintray {
         issueTrackerUrl = 'https://github.com/shiqizhenyes/NiceView/issues'
         publicDownloadNumbers = true
         version {
-            name = '1.0.3'
+            name = '1.0.4'
             desc = 'nice view open source library'
-            vcsTag = '1.0.3'
+            vcsTag = '1.0.4'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
 }
-
-//task buildAndUpload(){
-//
-//    gradlew build
-//    gradlew install
-//
-//}
