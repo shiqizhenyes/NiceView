@@ -97,7 +97,9 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     public NiceDateAndTimePickerDialog setTitle(String title) {
         this.title = title;
         if (niceDateAndTimePicker != null) {
-            niceDateAndTimePicker.setCenterTitle(this.title);
+            if (!TextUtils.isEmpty(title)) {
+                niceDateAndTimePicker.setCenterTitle(this.title);
+            }
         }
         return this;
     }
@@ -106,11 +108,13 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
     public NiceDateAndTimePickerDialog setTitle(@StringRes int titleId) {
         this.titleId = titleId;
         if (niceDateAndTimePicker != null) {
-            niceDateAndTimePicker.setCenterTitle(this.titleId);
+            if (titleId != -1) {
+                niceDateAndTimePicker.setCenterTitle(this.titleId);
+            }
         }
-
         return this;
     }
+
 
     public NiceDateAndTimePickerDialog setDisplayNow(boolean displayNow) {
         this.displayNow = displayNow;
@@ -161,7 +165,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
         if (niceDateAndTimePicker != null) {
 //            niceDateAndTimePicker.setdis
         }
-
         return this;
     }
 
@@ -264,7 +267,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
         }
         return this;
     }
-
 
 
     public NiceDateAndTimePickerDialog setOnDateSelectedListener(OnDateSelectedListener onDateSelectedListener) {
@@ -411,6 +413,8 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
         private String leftTitle;
         private String title;
+        @StringRes
+        private int titleId = -1;
         private String rightTitle;
 
         private boolean mustBeOnFuture = false;
@@ -434,6 +438,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
         private boolean displayPrevious = false;
         private boolean displayFuture = false;
 
+        private boolean curved = true;
 
         @Nullable
         private Date minDate;
@@ -446,6 +451,8 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
         @Nullable
         private Locale customLocale;
 
+
+
         public Builder(Context context, int dialogLayout, int pickerId) {
             this.context = new WeakReference<>(context);
             this.dialogLayout = dialogLayout;
@@ -457,7 +464,6 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
             this.style = style;
             return this;
         }
-
 
         public Builder dialogStyle() {
             setStyle(COMMON_DIALOG);
@@ -475,6 +481,11 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
             return this;
         }
 
+        public Builder setTitle(@StringRes int titleId) {
+            this.titleId = titleId;
+            return this;
+        }
+
         public Builder setRightTitle(String rightTitle) {
             this.rightTitle = rightTitle;
             return this;
@@ -489,6 +500,12 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
 
         public Builder hideTopLayout() {
             this.displayTopLayout = false;
+            return this;
+        }
+
+
+        public Builder disableCurved() {
+            this.curved = false;
             return this;
         }
 
@@ -600,6 +617,7 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
             return new NiceDateAndTimePickerDialog(context, dialogLayout, pickerId)
                     .setStyle(style)
                     .setMustBeOnFuture(mustBeOnFuture)
+                    .setCurved(curved)
                     .setDisplayNow(displayNow)
                     .setDisplayTomorrow(displayTomorrow)
                     .setDisplayTheDayAfterTomorrow(displayTheDayAfterTomorrow)
@@ -618,7 +636,8 @@ public class NiceDateAndTimePickerDialog extends BaseDialog implements View.OnCl
                     .setMinDate(minDate)
                     .setMaxDate(maxDate)
                     .setMinutesStep(minutesStep)
-                    .setTitle(title);
+                    .setTitle(title)
+                    .setTitle(titleId);
         }
 
     }

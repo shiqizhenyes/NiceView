@@ -649,7 +649,7 @@ public class NiceWheelPicker<V> extends View {
 
         Log.d(TAG, "itemPosition " + itemPosition + " currentItemPosition " +currentItemPosition);
 
-        if (itemPosition != currentItemPosition) {
+        if (itemPosition != getCurrentItemPosition()) {
 
             final int differencesLines = currentItemPosition - itemPosition;
 
@@ -665,10 +665,11 @@ public class NiceWheelPicker<V> extends View {
             va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 public void onAnimationUpdate(ValueAnimator animation) {
                     scrollOffsetY = (int) animation.getAnimatedValue();
+                    currentItemPosition = itemPosition;
                     if (null != onNiceWheelChangeListener) {
                         onNiceWheelChangeListener.onNiceWheelScrollStateChanged(SCROLL_STATE_SCROLLING);
                     }
-                    Log.d(TAG, "动画 scrollOffsetY " + scrollOffsetY);
+                    Log.d(TAG, "动画 scrollOffsetY " + scrollOffsetY + " currentItemPosition " + currentItemPosition);
                     invalidate();
                 }
             });
@@ -677,7 +678,7 @@ public class NiceWheelPicker<V> extends View {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     currentItemPosition = itemPosition;
-                    Log.d(TAG, "动画取消 getFinalY " + scroller.getFinalY() + " getCurrY " +scroller.getCurrY());
+                    Log.d(TAG, "动画取消 getFinalY " + scroller.getFinalY() + " getCurrY " +scroller.getCurrY() + " currentItemPosition " +  currentItemPosition);
                     onItemSelected();
                     setEnabled(true);
                 }

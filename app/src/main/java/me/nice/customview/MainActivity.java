@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .Builder(this, R.layout.nice_date_and_time_picker_dialog_layout,
                         R.id.niceDateAndTimePicker);
 
+                builder.setTitle(R.string.title);
                 builder
 //                        .displayDaysOfMonth()
-                        .hideTopLayout()
                         .displayDays()
                         .displayHours()
                         .displayMinutes()

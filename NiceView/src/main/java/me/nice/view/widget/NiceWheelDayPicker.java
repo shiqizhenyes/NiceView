@@ -353,6 +353,13 @@ public class NiceWheelDayPicker extends LinearLayout {
     }
 
 
+    public String getCurrentItemText() {
+        return adapter.getItemText(niceWheelPicker.getCurrentItemPosition());
+    }
+
+
+
+
     private Date convertItemToDate(int itemPosition) {
         Date date = null;
 

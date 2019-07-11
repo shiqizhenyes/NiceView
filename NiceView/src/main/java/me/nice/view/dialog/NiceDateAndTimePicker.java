@@ -257,7 +257,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
                                 if (niceWheelHourPicker.getCurrentItemPosition() == niceWheelHourPicker.getDefaultTextPosition()) {
                                     niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition() + 1);
                                 }
-//                                checkMinMaxDate();
+                                checkMinMaxDate();
                             }else {
                                 if (niceWheelHourPicker.getCurrentItemPosition() == niceWheelHourPicker.getDefaultTextPosition()) {
                                     niceWheelHourPicker.scrollTo(niceWheelHourPicker.getDefaultTextPosition() + 1);
@@ -273,7 +273,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
             public void onScrollFinished() {
                 Log.d(TAG, "niceWheelHourPicker滚动完成 ");
                 if (onDateSelectedListener != null) {
-                    onDateSelectedListener.onDateSelected(day ,getDate());
+                    onDateSelectedListener.onDateSelected( niceWheelDayPicker.getCurrentItemText() ,getDate());
                 }
             }
         });
@@ -296,7 +296,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
                                         niceWheelMinutePicker.getDefaultTextPosition()) {
                                     niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition() + 1);
                                 }
-//                                checkMinMaxDate();
+                                checkMinMaxDate();
                             }else {
                                 if (niceWheelMinutePicker.getCurrentItemPosition() == niceWheelMinutePicker.getDefaultTextPosition()) {
                                     niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition() + 1);
@@ -313,7 +313,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
                 Log.d(TAG, "niceWheelMinutePicker滚动完成 ");
                 if (onDateSelectedListener != null) {
-                    onDateSelectedListener.onDateSelected(day, getDate());
+                    onDateSelectedListener.onDateSelected( niceWheelDayPicker.getCurrentItemText(), getDate());
                 }
 
             }
@@ -510,7 +510,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
         niceWheelDayPicker.setDisplayFuture(displayFuture);
     }
 
-//
+
 //    private void setMinAndMaxYear() {
 //        if (displayYears && this.minDate != null && this.maxDate != null) {
 //            Calendar calendar = Calendar.getInstance();
@@ -745,7 +745,6 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
     public void hideTitle() {
         niceDateAndTimePickerTopCenterTitle.setVisibility(GONE);
-
     }
 
 
@@ -753,13 +752,14 @@ public class NiceDateAndTimePicker extends LinearLayout {
         niceDateAndTimePickerTopCenterTitle.setText(title);
     }
 
+
+
     public void setCenterTitle(@StringRes int titleId) {
         niceDateAndTimePickerTopCenterTitle.setText(titleId);
     }
 
 
-//
-//
+
 //    private void updateListener() {
 //        final Date date = getDate();
 //        final CharSequence format = amPm ? FORMAT_12_HOUR : FORMAT_24_HOUR;
@@ -802,7 +802,6 @@ public class NiceDateAndTimePicker extends LinearLayout {
         niceWheelHourPicker = rootView.findViewById(R.id.niceDateAndTimePickerHourPicker);
         niceWheelMinutePicker = rootView.findViewById(R.id.niceDateAndTimePickerMinutePicker);
 //        niceWheelAmPmPicker = rootView.findViewById(R.id.niceDateAndTimePickerAmPmPicker);
-
 
 //        setDefaultDate(new Date());
 //
