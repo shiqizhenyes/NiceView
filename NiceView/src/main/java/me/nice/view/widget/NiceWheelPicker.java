@@ -556,6 +556,9 @@ public class NiceWheelPicker<V> extends View {
                         break;
                     }
                     isClick = false;
+                    if (null == tracker) {
+                        tracker = VelocityTracker.obtain();
+                    }
                     tracker.addMovement(event);
                     if (null != onNiceWheelChangeListener) {
                         onNiceWheelChangeListener.onNiceWheelScrollStateChanged(SCROLL_STATE_DRAGGING);
@@ -572,6 +575,9 @@ public class NiceWheelPicker<V> extends View {
                     if (null != getParent()) getParent().requestDisallowInterceptTouchEvent(false);
                     Log.d(TAG, "isClick "  + isClick);
                     if (isClick) break;
+                    if (null == tracker) {
+                        tracker = VelocityTracker.obtain();
+                    }
                     tracker.addMovement(event);
                     tracker.computeCurrentVelocity(1000, maximumVelocity);
                     // Judges the WheelPicker is scroll or fling base on current velocity
