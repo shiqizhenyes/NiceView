@@ -95,8 +95,10 @@
             <enum name="bottom" value="4" />
         </attr>
         <attr name="offset" format="dimension" />
-        <attr name="bubbleHOffset" format="dimension"/>
-        <attr name="bubbleVOffset" format="dimension"/>
+        <attr name="bubbleHOffsetStart" format="dimension"/>
+        <attr name="bubbleHOffsetEnd" format="dimension"/>
+        <attr name="bubbleVOffsetTop" format="dimension"/>
+        <attr name="bubbleVOffsetBottom" format="dimension"/>
     </declare-styleable>
 
 

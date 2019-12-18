@@ -59,8 +59,12 @@ public class NiceBubbleLayout extends FrameLayout {
 
     private RectF mRect;
 
-    private int mBubbleHOffset;
-    private int mBubbleVOffset;
+    private int bubbleHOffsetStart;
+    private int bubbleHOffsetEnd;
+
+    private int bubbleVOffsetBottom;
+    private int bubbleVOffsetTop;
+
     private int mBubbleWidth;
     private int mBubbleHeight;
 
@@ -92,9 +96,11 @@ public class NiceBubbleLayout extends FrameLayout {
 
         mOffset = ta.getDimensionPixelOffset(R.styleable.NiceBubbleLayout_offset, 0);
 
-        mBubbleHOffset = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_bubbleHOffset, 0);
-        mBubbleVOffset = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_bubbleVOffset, 0);
+        bubbleHOffsetStart = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_bubbleHOffsetStart, 0);
+        bubbleHOffsetEnd = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_bubbleHOffsetEnd, 0);
 
+        bubbleVOffsetTop = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_bubbleVOffsetTop, 0);
+        bubbleVOffsetBottom = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_bubbleVOffsetBottom, 0);
 
         ta.recycle();
         mBorderPaint = new Paint();
@@ -163,7 +169,6 @@ public class NiceBubbleLayout extends FrameLayout {
         if (triangularLength == 0) {
             return;
         }
-
         mPath.addRoundRect(mRect, mRadius, mRadius, Path.Direction.CCW);
         mPath.moveTo(mDatumPoint.x, mDatumPoint.y - (triangularLength >> 1));
         mPath.lineTo(mDatumPoint.x + (triangularLength >> 1), mDatumPoint.y);
@@ -185,15 +190,14 @@ public class NiceBubbleLayout extends FrameLayout {
         canvas.drawPath(mPath, mBorderPaint);
     }
 
-
     private int halfBubbleWidth;
     private int halfBubbleHeight;
 
     private void initRect() {
-        mRect.left = (getWidth() >> 1) - halfBubbleWidth;
-        mRect.top = (getHeight() >> 1) - halfBubbleHeight + mBubbleVOffset;
-        mRect.right = (getWidth() >> 1) + halfBubbleWidth;
-        mRect.bottom = (getHeight() >> 1) + halfBubbleHeight + mBubbleVOffset;
+        mRect.left = (getWidth() >> 1) - halfBubbleWidth + bubbleHOffsetStart - bubbleHOffsetEnd;
+        mRect.top = (getHeight() >> 1) - halfBubbleHeight + bubbleVOffsetTop - bubbleVOffsetBottom;
+        mRect.right = (getWidth() >> 1) + halfBubbleWidth + bubbleHOffsetStart - bubbleHOffsetEnd;
+        mRect.bottom = (getHeight() >> 1) + halfBubbleHeight + bubbleVOffsetTop - bubbleVOffsetBottom;
     }
 
     @Override
@@ -214,6 +218,7 @@ public class NiceBubbleLayout extends FrameLayout {
         halfBubbleWidth = mBubbleWidth >> 1;
         halfBubbleHeight = mBubbleHeight >> 1;
         initRect();
+
         switch (mDirection) {
             case LEFT:
                 mDatumPoint.x = getPaddingLeft();
