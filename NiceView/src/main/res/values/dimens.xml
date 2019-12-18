@@ -6,4 +6,7 @@
     <dimen name="WheelMargins">8dp</dimen>
     <dimen name="wheel_spacing">30dp</dimen>
     <dimen name="wheelSelectorHeight">40dp</dimen>
+
+    <dimen name="pop_default_radius">10dp</dimen>
+
 </resources>

@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="NiceCircleTextView">
-
-    </declare-styleable>
-
-    <declare-styleable name="NiceMarkView">
-
-
-    </declare-styleable>
-
-
     <declare-styleable name="NiceWheelPicker">
         <attr name="nice_wheel_data" format="reference"/>
         <attr name="nice_wheel_selected_item_position" format="integer"/>
@@ -38,7 +28,76 @@
     </declare-styleable>
 
 
+    <declare-styleable name="NicePointerView">
+        <attr name="outRadius" format="dimension"/>
+        <attr name="lineHeight" format="dimension"/>
+        <attr name="outColor" format="color"/>
+        <attr name="insideColor" format="color"/>
+        <attr name="lineColor" format="color"/>
+        <attr name="waterWave" format="boolean"/>
+        <attr name="waterWaveMinRadius" format="dimension"/>
+        <attr name="waterWaveMaxRadius" format="dimension"/>
+        <attr name="jumpStyle" format="integer"/>
+        <attr name="zoomStyle" format="integer"/>
+    </declare-styleable>
 
+    <integer name="DIDI">101</integer>
+    <integer name="COMMON">102</integer>
+    <integer name="MO_BAI">102</integer>
+
+    <integer-array name="jumpStyle">
+        <item>@integer/DIDI</item>
+        <item>@integer/COMMON</item>
+    </integer-array>
+
+    <integer-array name="zoomStyle">
+        <item>@integer/DIDI</item>
+        <item>@integer/MO_BAI</item>
+    </integer-array>
+
+    <attr name="dotColor" format="color"/>
+    <attr name="dotAnimationColor" format="color"/>
+
+    <declare-styleable name="NiceDotLoadingView">
+        <attr name="dotRadius" format="dimension"/>
+        <attr name="dotColor"/>
+        <attr name="dotAnimationColor"/>
+        <attr name="dotCount" format="integer"/>
+        <attr name="dotSpace" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="NiceDotView">
+        <attr name="dotColor"/>
+        <attr name="dotPadding"/>
+    </declare-styleable>
+
+    <declare-styleable name="NicePopLayout">
+        <attr name="radiusSize" format="dimension" />
+        <attr name="bulgeSize" format="dimension" />
+        <attr name="offsetSize" format="dimension" />
+        <attr name="siteMode" format="enum">
+            <enum name="top" value="0" />
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="NiceBubbleLayout">
+        <attr name="backgroundColor" format="color" />
+        <attr name="shadowColor" format="color" />
+        <attr name="shadowSize" format="dimension" />
+        <attr name="radius" format="dimension" />
+        <attr name="direction" format="enum">
+            <enum name="left" value="1" />
+            <enum name="top" value="2" />
+            <enum name="right" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+        <attr name="offset" format="dimension" />
+        <attr name="bubbleHOffset" format="dimension"/>
+        <attr name="bubbleVOffset" format="dimension"/>
+    </declare-styleable>
 
 
 </resources>

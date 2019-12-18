@@ -6,7 +6,7 @@ import android.util.Log;
 
 import java.util.Date;
 
-import me.nice.view.widget.NiceWheelDayPicker;
+import me.nice.view.widget.wheel.NiceWheelDayPicker;
 
 public class PickerActivity extends AppCompatActivity {
 

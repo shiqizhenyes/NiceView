@@ -49,7 +49,7 @@
             android:orientation="horizontal"
             android:weightSum="3">
 
-            <!--<me.nice.view.widget.NiceWheelYearPicker-->
+            <!--<me.nice.view.widget.wheel.NiceWheelYearPicker-->
                 <!--android:id="@+id/niceDateAndTimePickerYearPicker"-->
                 <!--android:layout_width="0dp"-->
                 <!--android:layout_height="match_parent"-->
@@ -60,7 +60,7 @@
                 <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
                 <!--app:nice_wheel_visible_item_count="4"/>-->
 
-            <!--<me.nice.view.widget.NiceWheelMonthPicker-->
+            <!--<me.nice.view.widget.wheel.NiceWheelMonthPicker-->
                 <!--android:id="@+id/niceDateAndTimePickerMonthPicker"-->
                 <!--android:layout_width="0dp"-->
                 <!--android:layout_height="match_parent"-->
@@ -71,7 +71,7 @@
                 <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
                 <!--app:nice_wheel_visible_item_count="4"/>-->
 
-            <!--<me.nice.view.widget.NiceWheelDayOfMonthPicker-->
+            <!--<me.nice.view.widget.wheel.NiceWheelDayOfMonthPicker-->
                 <!--android:id="@+id/niceDateAndTimePickerDayOfMonthPicker"-->
                 <!--android:layout_width="0dp"-->
                 <!--android:layout_height="match_parent"-->
@@ -82,7 +82,7 @@
                 <!--app:nice_wheel_item_space="@dimen/wheel_spacing"-->
                 <!--app:nice_wheel_visible_item_count="4"/>-->
 
-            <me.nice.view.widget.NiceWheelDayPicker
+            <me.nice.view.widget.wheel.NiceWheelDayPicker
                 android:id="@+id/niceDateAndTimePickerDayPicker"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -92,7 +92,7 @@
                 app:nice_wheel_item_space="@dimen/wheel_spacing"
                 app:nice_wheel_visible_item_count="4" />
 
-            <me.nice.view.widget.NiceWheelHourPicker
+            <me.nice.view.widget.wheel.NiceWheelHourPicker
                 android:id="@+id/niceDateAndTimePickerHourPicker"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -102,7 +102,7 @@
                 app:nice_wheel_item_space="@dimen/wheel_spacing"
                 app:nice_wheel_visible_item_count="4"/>
 
-            <me.nice.view.widget.NiceWheelMinutePicker
+            <me.nice.view.widget.wheel.NiceWheelMinutePicker
                 android:id="@+id/niceDateAndTimePickerMinutePicker"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -112,7 +112,7 @@
                 app:nice_wheel_item_space="@dimen/wheel_spacing"
                 app:nice_wheel_visible_item_count="4"/>
 
-            <!--<me.nice.view.widget.NiceWheelAmPmPicker-->
+            <!--<me.nice.view.widget.wheel.NiceWheelAmPmPicker-->
                 <!--android:id="@+id/niceDateAndTimePickerAmPmPicker"-->
                 <!--android:layout_width="0dp"-->
                 <!--android:layout_height="match_parent"-->

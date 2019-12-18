@@ -1,9 +1,8 @@
-package me.nice.view.widget;
+package me.nice.view.widget.wheel;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Camera;
@@ -13,11 +12,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Region;
 import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.text.LoginFilter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -28,16 +23,11 @@ import android.view.ViewConfiguration;
 import android.widget.Scroller;
 
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import me.nice.view.R;
 import me.nice.view.adapter.NiceWheelAdapter;
-import me.nice.view.helper.DateHelper;
-import me.nice.view.helper.LocaleHelper;
 import me.nice.view.inter.OnItemSelectedListener;
 import me.nice.view.inter.OnNiceWheelChangeListener;
 import me.nice.view.inter.onSelectedListener;

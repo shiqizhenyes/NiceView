@@ -1,8 +1,7 @@
-package me.nice.view.widget;
+package me.nice.view.widget.wheel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -24,8 +23,8 @@ import me.nice.view.inter.OnNiceWheelChangeListener;
 import me.nice.view.inter.OnScrollFinishedListener;
 
 import static me.nice.view.inter.SingleDateAndTimeConstants.*;
-import static me.nice.view.widget.NiceWheelPicker.FORMAT;
-import static me.nice.view.widget.NiceWheelPicker.SCROLL_STATE_IDLE;
+import static me.nice.view.widget.wheel.NiceWheelPicker.FORMAT;
+import static me.nice.view.widget.wheel.NiceWheelPicker.SCROLL_STATE_IDLE;
 
 
 public class NiceWheelMinutePicker extends LinearLayout {

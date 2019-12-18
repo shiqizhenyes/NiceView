@@ -1,4 +1,4 @@
-package me.nice.view.widget;
+package me.nice.view.widget.wheel;
 
 import android.content.Context;
 import android.util.AttributeSet;

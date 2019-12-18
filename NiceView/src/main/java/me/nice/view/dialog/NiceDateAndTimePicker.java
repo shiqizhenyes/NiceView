@@ -7,44 +7,33 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.annotation.StringRes;
-import android.text.LoginFilter;
 import android.text.format.DateFormat;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import me.nice.view.R;
 import me.nice.view.helper.DateHelper;
-import me.nice.view.helper.LocaleHelper;
 import me.nice.view.inter.OnDateSelectedListener;
-import me.nice.view.inter.OnLeftTitleClickListener;
-import me.nice.view.inter.OnRightTitleClickListener;
 import me.nice.view.inter.OnScrollFinishedListener;
-import me.nice.view.widget.NiceWheelAmPmPicker;
-import me.nice.view.widget.NiceWheelDayOfMonthPicker;
-import me.nice.view.widget.NiceWheelDayPicker;
-import me.nice.view.widget.NiceWheelHourPicker;
-import me.nice.view.widget.NiceWheelMinutePicker;
-import me.nice.view.widget.NiceWheelMonthPicker;
-import me.nice.view.widget.NiceWheelPicker;
-import me.nice.view.widget.NiceWheelYearPicker;
+import me.nice.view.widget.wheel.NiceWheelAmPmPicker;
+import me.nice.view.widget.wheel.NiceWheelDayOfMonthPicker;
+import me.nice.view.widget.wheel.NiceWheelDayPicker;
+import me.nice.view.widget.wheel.NiceWheelHourPicker;
+import me.nice.view.widget.wheel.NiceWheelMinutePicker;
+import me.nice.view.widget.wheel.NiceWheelMonthPicker;
+import me.nice.view.widget.wheel.NiceWheelYearPicker;
 
 import static me.nice.view.helper.DateHelper.getCalendarOfDate;
 import static me.nice.view.helper.DateHelper.getMinuteOf;
-import static me.nice.view.helper.DateHelper.today;
 import static me.nice.view.inter.SingleDateAndTimeConstants.*;
-import static me.nice.view.widget.NiceWheelPicker.SCROLL_STATE_SCROLLING;
 
 public class NiceDateAndTimePicker extends LinearLayout {
 

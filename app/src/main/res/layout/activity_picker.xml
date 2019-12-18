@@ -14,19 +14,19 @@
         android:orientation="horizontal"
         android:weightSum="3">
 
-        <me.nice.view.widget.NiceWheelMonthPicker
+        <me.nice.view.widget.wheel.NiceWheelMonthPicker
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_weight="1" />
 
 
-        <me.nice.view.widget.NiceWheelDayPicker
+        <me.nice.view.widget.wheel.NiceWheelDayPicker
             android:id="@+id/niceWheelDayPicker"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="300dp" />
 
-        <me.nice.view.widget.NiceWheelDayOfMonthPicker
+        <me.nice.view.widget.wheel.NiceWheelDayOfMonthPicker
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="300dp" />
@@ -40,17 +40,17 @@
         android:orientation="horizontal"
         android:weightSum="3">
 
-        <me.nice.view.widget.NiceWheelHourPicker
+        <me.nice.view.widget.wheel.NiceWheelHourPicker
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_weight="1"/>
         
-        <me.nice.view.widget.NiceWheelMinutePicker
+        <me.nice.view.widget.wheel.NiceWheelMinutePicker
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_weight="1"/>
 
-        <me.nice.view.widget.NiceWheelAmPmPicker
+        <me.nice.view.widget.wheel.NiceWheelAmPmPicker
             android:layout_width="0dp"
             android:layout_height="300dp"
             android:layout_weight="1"/>

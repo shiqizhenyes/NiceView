@@ -1,4 +1,4 @@
-package me.nice.view.widget;
+package me.nice.view.widget.wheel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -24,8 +24,8 @@ import me.nice.view.inter.OnScrollFinishedListener;
 import static me.nice.view.helper.DateHelper.getHour;
 import static me.nice.view.helper.DateHelper.today;
 import static me.nice.view.inter.SingleDateAndTimeConstants.*;
-import static me.nice.view.widget.NiceWheelPicker.FORMAT;
-import static me.nice.view.widget.NiceWheelPicker.SCROLL_STATE_IDLE;
+import static me.nice.view.widget.wheel.NiceWheelPicker.FORMAT;
+import static me.nice.view.widget.wheel.NiceWheelPicker.SCROLL_STATE_IDLE;
 
 public class NiceWheelHourPicker extends LinearLayout {
 

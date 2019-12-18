@@ -1,11 +1,9 @@
-package me.nice.view.widget;
+package me.nice.view.widget.wheel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -28,7 +26,7 @@ import me.nice.view.inter.OnScrollFinishedListener;
 
 import static me.nice.view.inter.SingleDateAndTimeConstants.DAYS_PADDING;
 import static me.nice.view.inter.SingleDateAndTimeConstants.DAY_FORMAT_M_D;
-import static me.nice.view.widget.NiceWheelPicker.SCROLL_STATE_IDLE;
+import static me.nice.view.widget.wheel.NiceWheelPicker.SCROLL_STATE_IDLE;
 
 
 public class NiceWheelDayPicker extends LinearLayout {

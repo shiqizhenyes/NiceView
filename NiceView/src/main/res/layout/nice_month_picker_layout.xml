@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <me.nice.view.widget.NiceWheelPicker
+    <me.nice.view.widget.wheel.NiceWheelPicker
         android:id="@+id/niceWheelMonthPicker"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

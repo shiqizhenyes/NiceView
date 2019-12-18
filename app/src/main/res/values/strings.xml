@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NiceViewDemo</string>
+
+    <string name="nice_pointer" translatable="false">Nice Pointer</string>
+    <string name="nice_picker" translatable="false">Nice Picker</string>
+
 </resources>

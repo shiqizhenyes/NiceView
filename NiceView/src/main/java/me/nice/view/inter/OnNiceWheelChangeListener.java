@@ -1,6 +1,6 @@
 package me.nice.view.inter;
 
-import me.nice.view.widget.NiceWheelPicker;
+import me.nice.view.widget.wheel.NiceWheelPicker;
 
 public interface OnNiceWheelChangeListener {
 

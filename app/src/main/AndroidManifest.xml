@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PickerActivity"></activity>
+        <activity android:name=".NicePointerActivity"></activity>
+        <activity android:name=".PickerActivity" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
