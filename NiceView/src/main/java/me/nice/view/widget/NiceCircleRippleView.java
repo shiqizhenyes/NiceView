@@ -47,7 +47,7 @@ public class NiceCircleRippleView extends View {
         initCirclePaint();
         initCircleRipplePaint();
         initRippleAnimator();
-        startRippleAnimator();
+//        startRippleAnimator();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -59,7 +59,6 @@ public class NiceCircleRippleView extends View {
         initCirclePaint();
         initCircleRipplePaint();
         initRippleAnimator();
-        startRippleAnimator();
     }
 
     private void initStyledAttr() {
@@ -174,9 +173,29 @@ public class NiceCircleRippleView extends View {
         alphaAnimator.setRepeatCount(INFINITE);
     }
 
+    public void setCircleRadius(int circleRadius) {
+        this.circleRadius = circleRadius;
+        invalidate();
+    }
+
+    public void setCircleColor(int circleColor) {
+        this.circleColor = circleColor;
+        circlePaint.setColor(this.circleColor);
+        invalidate();
+    }
+
+    public void setCircleRippleRadius(int circleRippleRadius) {
+        this.circleRippleRadius = circleRippleRadius;
+    }
+
+    public void setCircleRippleDuring(int circleRippleDuring) {
+        this.circleRippleDuring = circleRippleDuring;
+    }
+
     private AnimatorSet animatorSet;
 
-    private void startRippleAnimator() {
+    public void startRippleAnimator() {
+        initRippleAnimator();
         animatorSet = new AnimatorSet();
         animatorSet.setDuration(circleRippleDuring);
         animatorSet.playTogether(zoomAnimator, alphaAnimator);
@@ -185,7 +204,7 @@ public class NiceCircleRippleView extends View {
     }
 
 
-    private void cancelRippleAnimator() {
+    public void cancelRippleAnimator() {
         if (animatorSet != null) {
             animatorSet.cancel();
             animatorSet = null;

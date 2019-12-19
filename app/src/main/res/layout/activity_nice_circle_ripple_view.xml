@@ -7,13 +7,13 @@
     android:orientation="vertical"
     tools:context=".NiceCircleRippleViewActivity">
 
-    <me.nice.view.widget.NiceCircleRippleView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:circleRadius="40dp"
-        app:circleColor="@color/md_red_500"
-        app:circleRippleRadius="200dp"
-        app:circleRippleDuring="500" />
+<!--    <me.nice.view.widget.NiceCircleRippleView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        app:circleRadius="40dp"-->
+<!--        app:circleColor="@color/md_red_500"-->
+<!--        app:circleRippleRadius="200dp"-->
+<!--        app:circleRippleDuring="500" />-->
 
 </LinearLayout>

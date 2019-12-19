@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import me.nice.view.R;
 
-public class NiceDotView extends TextView {
+public class NiceDotView extends android.support.v7.widget.AppCompatTextView {
 
     private Paint mPaint;
     private int mDotPadding;
