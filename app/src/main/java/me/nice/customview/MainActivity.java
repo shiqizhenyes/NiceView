@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (view.getId() == R.id.mainViewButton) {
                     if (mainView.getId() == R.string.nice_pointer) {
                         goToNicePointer();
+                    } else if (mainView.getId() == R.string.nice_circle_ripple) {
+                        goToNiceCircleRipple();
                     }
                 }
             }
@@ -70,10 +72,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    private void goToNiceCircleRipple() {
+        Intent intent = new Intent(this, NiceCircleRippleViewActivity.class);
+        startActivity(intent);
+    }
 
     private void displayViews() {
         mainViews.add(new MainView(getString(R.string.nice_pointer), R.string.nice_pointer));
         mainViews.add(new MainView(getString(R.string.nice_picker), R.string.nice_picker));
+        mainViews.add(new MainView(getString(R.string.nice_circle_ripple), R.string.nice_circle_ripple));
         viewAdapter.notifyDataSetChanged();
     }
 
@@ -81,8 +88,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-
-        }
     }
 }

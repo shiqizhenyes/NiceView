@@ -101,5 +101,11 @@
         <attr name="bubbleVOffsetBottom" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="NiceCircleRippleView">
+        <attr name="circleRadius" format="dimension"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="circleRippleRadius" format="dimension"/>
+        <attr name="circleRippleDuring" format="integer"/>
+    </declare-styleable>
 
 </resources>
