@@ -33,23 +33,23 @@ public class NiceBubbleLayout extends FrameLayout {
     }
 
     /**
-     * åœ†è§’å¤§å°
+     * Ô²½Ç´óĞ¡
      */
     private int mRadius;
 
     /**
-     * ä¸‰è§’å½¢çš„æ–¹å‘
+     * Èı½ÇĞÎµÄ·½Ïò
      */
     @Direction
     private int mDirection;
 
     /**
-     * ä¸‰è§’å½¢çš„åº•è¾¹ä¸­å¿ƒç‚¹
+     * Èı½ÇĞÎµÄµ×±ßÖĞĞÄµã
      */
     private Point mDatumPoint;
 
     /**
-     * ä¸‰è§’å½¢ä½ç½®åç§»é‡(é»˜è®¤å±…ä¸­)
+     * Èı½ÇĞÎÎ»ÖÃÆ«ÒÆÁ¿(Ä¬ÈÏ¾ÓÖĞ)
      */
     private int mOffset;
 
@@ -78,20 +78,20 @@ public class NiceBubbleLayout extends FrameLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs,
                 R.styleable.NiceBubbleLayout);
 
-        //èƒŒæ™¯é¢œè‰²
+        //±³¾°ÑÕÉ«
         int backGroundColor = ta.getColor(R.styleable.NiceBubbleLayout_backgroundColor, Color.WHITE);
 
-        //é˜´å½±é¢œè‰²
+        //ÒõÓ°ÑÕÉ«
         int shadowColor = ta.getColor(R.styleable.NiceBubbleLayout_shadowColor,
                 ContextCompat.getColor(context, R.color.md_black_alpha_50));
 
         int defShadowSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
                 4, getResources().getDisplayMetrics());
-        //é˜´å½±å°ºå¯¸
+        //ÒõÓ°³ß´ç
         int shadowSize = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_shadowSize, defShadowSize);
 
         mRadius = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_radius, 0);
-        //ä¸‰è§’å½¢æ–¹å‘
+        //Èı½ÇĞÎ·½Ïò
         mDirection = ta.getInt(R.styleable.NiceBubbleLayout_direction, BOTTOM);
 
         mOffset = ta.getDimensionPixelOffset(R.styleable.NiceBubbleLayout_offset, 0);
@@ -113,7 +113,7 @@ public class NiceBubbleLayout extends FrameLayout {
         mDatumPoint = new Point();
 
         setWillNotDraw(false);
-//        //å…³é—­ç¡¬ä»¶åŠ é€Ÿ
+//        //¹Ø±ÕÓ²¼ş¼ÓËÙ
 //        setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
 
@@ -244,9 +244,9 @@ public class NiceBubbleLayout extends FrameLayout {
     }
 
     /**
-     * è®¾ç½®ä¸‰è§’å½¢åç§»ä½ç½®
+     * ÉèÖÃÈı½ÇĞÎÆ«ÒÆÎ»ÖÃ
      *
-     * @param offset åç§»é‡
+     * @param offset Æ«ÒÆÁ¿
      */
     public void setTriangleOffset(int offset) {
         this.mOffset = offset;

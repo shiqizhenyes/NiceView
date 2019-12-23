@@ -14,7 +14,7 @@ import me.nice.view.R;
 
 
 /**
- * åœ°å›¾å®šä½ç‚¹æ§ä»¶
+ * µØÍ¼¶¨Î»µã¿Ø¼ş
  */
 public class NicePointerView extends View {
 
@@ -86,7 +86,7 @@ public class NicePointerView extends View {
 
 
     /**
-     * åˆå§‹åŒ–ç”»ç¬”
+     * ³õÊ¼»¯»­±Ê
      */
     private void initPaint() {
         outPaint = new Paint();
@@ -181,7 +181,7 @@ public class NicePointerView extends View {
 
 
     /**
-     * ç”»çº¿
+     * »­Ïß
      * @param canvas
      */
     private void drawLine(Canvas canvas) {
@@ -190,7 +190,7 @@ public class NicePointerView extends View {
     }
 
     /**
-     * ç»˜åˆ¶æ°´æ³¢çº¹
+     * »æÖÆË®²¨ÎÆ
      * @param canvas
      */
     private void drawWave(Canvas canvas) {
@@ -201,7 +201,7 @@ public class NicePointerView extends View {
     ValueAnimator outValueAnimator;
 
     /**
-     * å¼€å§‹å¤–åœ†åŠ¨ç”»
+     * ¿ªÊ¼ÍâÔ²¶¯»­
      */
     public void startOutAnimation() {
         if (outValueAnimator!=null&&outValueAnimator.isRunning()) {
@@ -241,7 +241,7 @@ public class NicePointerView extends View {
 //            @Override
 //            public void onAnimationUpdate(ValueAnimator animation) {
 //                circleHeigh = (int) animation.getAnimatedValue();
-//                Log.d("deling", "circleHeighåŠ¨ç”»çš„å€¼ " + String.valueOf(animation.getAnimatedValue()));
+//                Log.d("deling", "circleHeigh¶¯»­µÄÖµ " + String.valueOf(animation.getAnimatedValue()));
 //                invalidate();
 //            }
 //        });
@@ -262,7 +262,7 @@ public class NicePointerView extends View {
 //    }
 
     /**
-     * å¼€å§‹å†…åœ†åŠ¨ç”»
+     * ¿ªÊ¼ÄÚÔ²¶¯»­
      */
     public void startInsideAnimation() {
 
@@ -296,7 +296,7 @@ public class NicePointerView extends View {
     private ValueAnimator waveValueAnimator;
 
     /**
-     * å¼€å§‹æ°´æ³¢çº¹åŠ¨ç”»
+     * ¿ªÊ¼Ë®²¨ÎÆ¶¯»­
      */
     public void startWaveAnimation() {
 
@@ -338,7 +338,7 @@ public class NicePointerView extends View {
     private ValueAnimator waveColorAnimation;
 
     /**
-     * å¼€å§‹æ°´æ³¢çº¹é¢œè‰²åŠ¨ç”»
+     * ¿ªÊ¼Ë®²¨ÎÆÑÕÉ«¶¯»­
      */
     public void startWaveColorAnimation() {
 
@@ -377,7 +377,7 @@ public class NicePointerView extends View {
 
 
     /**
-     * æ»´æ»´é£æ ¼ç¼©æ”¾
+     * µÎµÎ·ç¸ñËõ·Å
      */
     public void startZoomDiDiStyleAnimation() {
         startOutAnimation();
@@ -385,7 +385,7 @@ public class NicePointerView extends View {
 
 
     /**
-     * æ‘©æ‹œé£æ ¼ç¼©æ”¾
+     * Ä¦°İ·ç¸ñËõ·Å
      */
     public void startZoomMoBaiStyleAnimation() {
         startInsideAnimation();
@@ -393,7 +393,7 @@ public class NicePointerView extends View {
 
 
     /**
-     * é»˜è®¤ä½¿ç”¨æ»´æ»´é£æ ¼çš„åŠ¨ç”»
+     * Ä¬ÈÏÊ¹ÓÃµÎµÎ·ç¸ñµÄ¶¯»­
      */
     public void startZoomAnimation() {
         if (zoomStyle == getContext().getResources().getInteger(R.integer.DIDI)) {
@@ -409,7 +409,7 @@ public class NicePointerView extends View {
     private int centerYOld;
 
     /**
-     * æ»´æ»´é£æ ¼è·³åŠ¨
+     * µÎµÎ·ç¸ñÌø¶¯
      */
     public void startJumpDiDiStyleAnimation() {
         cancelJumpDiDiStyleAnimation();
@@ -465,7 +465,7 @@ public class NicePointerView extends View {
     }
 
     /**
-     * é€šç”¨è·³åŠ¨
+     * Í¨ÓÃÌø¶¯
      */
     public void startJumpCommonAnimation() {
 

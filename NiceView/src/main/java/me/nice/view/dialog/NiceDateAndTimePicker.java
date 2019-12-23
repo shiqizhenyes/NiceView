@@ -195,7 +195,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
                         day = name;
                         if (displayNow) {
-                            // TODO: 2019/7/8 æ˜¾ç¤ºç°åœ¨
+                            // TODO: 2019/7/8 ÏÔÊ¾ÏÖÔÚ
                             if (niceWheelDayPicker.getCurrentItemPosition() ==
                                     niceWheelDayPicker.getNowItemPosition()) {
 
@@ -222,7 +222,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
             @Override
             public void onScrollFinished() {
 //                checkMinMaxDate();
-                Log.d(TAG, "æ»šåŠ¨å®Œæˆ ");
+                Log.d(TAG, "¹ö¶¯Íê³É ");
 
                 if (onDateSelectedListener != null) {
                     onDateSelectedListener.onDateSelected(day ,getDate());
@@ -260,7 +260,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
                 }).setOnScrollFinishedListener(new OnScrollFinishedListener() {
             @Override
             public void onScrollFinished() {
-                Log.d(TAG, "niceWheelHourPickeræ»šåŠ¨å®Œæˆ ");
+                Log.d(TAG, "niceWheelHourPicker¹ö¶¯Íê³É ");
                 if (onDateSelectedListener != null) {
                     onDateSelectedListener.onDateSelected( niceWheelDayPicker.getCurrentItemText() ,getDate());
                 }
@@ -274,7 +274,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
                     public void onMinuteChanged(NiceWheelMinutePicker picker, int minutes) {
                         Log.d(TAG, "minutes  " + minutes);
                         if (displayNow) {
-                            // TODO: 2019/7/8 æ˜¾ç¤ºç°åœ¨
+                            // TODO: 2019/7/8 ÏÔÊ¾ÏÖÔÚ
                             if (niceWheelDayPicker.getCurrentItemPosition() ==
                                     niceWheelDayPicker.getNowItemPosition()) {
                                 niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.getDefaultTextPosition());
@@ -300,7 +300,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
             @Override
             public void onScrollFinished() {
 
-                Log.d(TAG, "niceWheelMinutePickeræ»šåŠ¨å®Œæˆ ");
+                Log.d(TAG, "niceWheelMinutePicker¹ö¶¯Íê³É ");
                 if (onDateSelectedListener != null) {
                     onDateSelectedListener.onDateSelected( niceWheelDayPicker.getCurrentItemText(), getDate());
                 }
@@ -357,22 +357,22 @@ public class NiceDateAndTimePicker extends LinearLayout {
 //
     private void checkBeforeMinDate() {
 
-        Log.d(TAG, "è·å–æ—¶é—´" + getDate().toString() + " æ˜¯å¦åœ¨æœ€å°æ—¥æœŸä¹‹å‰ " + isBeforeMinDate(getDate()));
+        Log.d(TAG, "»ñÈ¡Ê±¼ä" + getDate().toString() + " ÊÇ·ñÔÚ×îĞ¡ÈÕÆÚÖ®Ç° " + isBeforeMinDate(getDate()));
 
         if (isBeforeMinDate(getDate())) {
 
             niceWheelDayPicker.scrollTo(niceWheelDayPicker.findIndexOfDate(minDate));
 
-            Log.d(TAG, " æ—¥æœŸæŸ¥æ‰¾ä½ç½® " + niceWheelDayPicker.findIndexOfDate(minDate));
+            Log.d(TAG, " ÈÕÆÚ²éÕÒÎ»ÖÃ " + niceWheelDayPicker.findIndexOfDate(minDate));
 
             niceWheelHourPicker.scrollTo(niceWheelHourPicker.findIndexOfDate(minDate));
 
-            Log.d(TAG, " æ—¥æœŸæŸ¥æ‰¾ä½ç½® " + niceWheelHourPicker.findIndexOfDate(minDate));
+            Log.d(TAG, " ÈÕÆÚ²éÕÒÎ»ÖÃ " + niceWheelHourPicker.findIndexOfDate(minDate));
 
 
             niceWheelMinutePicker.scrollTo(niceWheelMinutePicker.findIndexOfDate(minDate));
 
-            Log.d(TAG, " æ—¥æœŸæŸ¥æ‰¾ä½ç½® " + niceWheelMinutePicker.findIndexOfDate(minDate));
+            Log.d(TAG, " ÈÕÆÚ²éÕÒÎ»ÖÃ " + niceWheelMinutePicker.findIndexOfDate(minDate));
 
         }
 
@@ -400,7 +400,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 
     private void checkAfterMaxDate() {
 
-        Log.d(TAG, "è·å–æ—¶é—´" + getDate().toString() + " æ˜¯å¦åœ¨æœ€å¤§æ—¥æœŸä¹‹å " + isAfterMaxDate(getDate()) + " maxDate  " + maxDate.toString());
+        Log.d(TAG, "»ñÈ¡Ê±¼ä" + getDate().toString() + " ÊÇ·ñÔÚ×î´óÈÕÆÚÖ®ºó " + isAfterMaxDate(getDate()) + " maxDate  " + maxDate.toString());
 
         if (isAfterMaxDate(getDate())) {
             niceWheelDayPicker.scrollTo(niceWheelDayPicker.findIndexOfDate(maxDate));
@@ -563,7 +563,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 //    }
 //
     /**
-     * æ˜¯å¦æ˜¾ç¤ºä¸Šæ–¹å¸ƒå±€
+     * ÊÇ·ñÏÔÊ¾ÉÏ·½²¼¾Ö
      * @param displayTopLayout
      */
     public void setDisplayTopLayout(boolean displayTopLayout) {
@@ -625,7 +625,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
 //
 //
     /**
-     * æ˜¯å¦å·æ›²
+     * ÊÇ·ñ¾íÇú
      * @param curved
      */
     public void setCurved(boolean curved) {
@@ -803,7 +803,7 @@ public class NiceDateAndTimePicker extends LinearLayout {
     }
 
     private void initStyle() {
-        // TODO: 2019-06-29 è‡ªå®šä¹‰å±æ€§è¿‡æ®µæ—¶é—´å†™
+        // TODO: 2019-06-29 ×Ô¶¨ÒåÊôĞÔ¹ı¶ÎÊ±¼äĞ´
 //        checkSettings();
         niceWheelDayPicker.setDisplayPrevious(displayPrevious);
         niceWheelDayPicker.setDisplayFuture(displayFuture);

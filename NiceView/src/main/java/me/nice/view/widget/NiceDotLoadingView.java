@@ -75,7 +75,7 @@ public class NiceDotLoadingView extends View {
     }
 
     /**
-     * åˆå§‹åŒ–å±æ€§
+     * ³õÊ¼»¯ÊôĞÔ
      */
     private void initStyledAttr() {
         dotRadius = styledAttrArray

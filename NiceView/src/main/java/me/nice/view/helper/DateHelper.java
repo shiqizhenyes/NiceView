@@ -37,7 +37,7 @@ public class DateHelper {
     }
 
     /**
-     * 鍙栧緱鏈�灏忓垎閽熸椂闂村樊鐨勬暣鏁板�嶆暟鏃堕棿锛堝垎閽燂級
+     * 取得最小分钟时间差的整数倍数时间（分钟）
      * @param date
      * @param minuteStep
      * @return

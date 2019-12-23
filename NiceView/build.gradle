@@ -37,10 +37,6 @@ dependencies {
     implementation "com.android.support:design:$rootProject.supportVersion"
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
-
 // 生成jar包的task，不需要修改。
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
@@ -130,4 +126,8 @@ bintray {
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
