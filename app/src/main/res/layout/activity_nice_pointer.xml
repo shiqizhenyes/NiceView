@@ -29,11 +29,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="300dp"
         app:backgroundColor="@color/md_teal_300"
         android:padding="10dp"
         app:radius="28dp"
         app:shadowColor="@color/md_teal_200"
-        app:bubbleVOffsetBottom="125dp"
         app:bubbleHOffsetStart="100dp"
         app:bubbleHOffsetEnd="100dp">
 
@@ -43,7 +44,6 @@
             android:layout_height="wrap_content"
             android:background="@color/g_default_base_transparent"
             android:layout_gravity="center"
-            android:layout_marginBottom="125dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

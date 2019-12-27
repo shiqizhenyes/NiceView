@@ -116,4 +116,10 @@
         <attr name="circleColor"/>
     </declare-styleable>
 
+
+    <declare-styleable name="NiceTextView">
+        <attr name="niceStrokeSize" format="dimension"/>
+        <attr name="niceStrokeColor" format="color"/>
+    </declare-styleable>
+
 </resources>

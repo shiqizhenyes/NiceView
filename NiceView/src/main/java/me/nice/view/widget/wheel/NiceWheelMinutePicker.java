@@ -220,7 +220,7 @@ public class NiceWheelMinutePicker extends LinearLayout {
 
     public void scrollTo(int poison) {
 
-        Log.d(TAG, "¹ö¶¯µ½ "  + poison);
+        Log.d(TAG, "æ»šåŠ¨åˆ° "  + poison);
 
         niceWheelPicker.scrollTo(poison);
     }
@@ -233,7 +233,7 @@ public class NiceWheelMinutePicker extends LinearLayout {
         for (int i = 0; i < adapter.getData().size(); i++) {
             if (item.equals(adapter.getData().get(i))) {
                 index = i;
-                Log.d(TAG, "²éÕÒ·ÖÎ»ÖÃ " + index);
+                Log.d(TAG, "æŸ¥æ‰¾åˆ†ä½ç½® " + index);
                 break;
             }
         }

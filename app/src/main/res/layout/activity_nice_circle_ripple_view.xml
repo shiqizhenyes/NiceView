@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/md_black"
     tools:context=".NiceCircleRippleViewActivity">
 
-<!--    <me.nice.view.widget.NiceCircleRippleView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        app:circleRadius="40dp"-->
-<!--        app:circleColor="@color/md_red_500"-->
-<!--        app:circleRippleRadius="200dp"-->
-<!--        app:circleRippleDuring="500" />-->
+    <me.nice.view.widget.NiceTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        android:background="@color/md_green_60"
+        android:paddingStart="30dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:text="测绘技术"
+        android:textColor="@color/md_red_500"
+        app:niceStrokeSize="3dp"
+        app:niceStrokeColor="@color/md_white" />
 
-</LinearLayout>
+</RelativeLayout>

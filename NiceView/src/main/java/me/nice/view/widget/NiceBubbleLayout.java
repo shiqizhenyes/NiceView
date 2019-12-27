@@ -8,10 +8,12 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.graphics.RectF;
+import android.os.Build;
 import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.widget.FrameLayout;
 
@@ -21,6 +23,9 @@ import java.lang.annotation.RetentionPolicy;
 import me.nice.view.R;
 
 public class NiceBubbleLayout extends FrameLayout {
+
+
+    private final String tag = NiceBubbleLayout.class.getSimpleName();
 
     public static final int LEFT = 1;
     public static final int TOP = 2;
@@ -33,23 +38,23 @@ public class NiceBubbleLayout extends FrameLayout {
     }
 
     /**
-     * Ô²½Ç´óĞ¡
+     * åœ†è§’å¤§å°
      */
     private int mRadius;
 
     /**
-     * Èı½ÇĞÎµÄ·½Ïò
+     * ä¸‰è§’å½¢çš„æ–¹å‘
      */
     @Direction
     private int mDirection;
 
     /**
-     * Èı½ÇĞÎµÄµ×±ßÖĞĞÄµã
+     * ä¸‰è§’å½¢çš„åº•è¾¹ä¸­å¿ƒç‚¹
      */
     private Point mDatumPoint;
 
     /**
-     * Èı½ÇĞÎÎ»ÖÃÆ«ÒÆÁ¿(Ä¬ÈÏ¾ÓÖĞ)
+     * ä¸‰è§’å½¢ä½ç½®åç§»é‡(é»˜è®¤å±…ä¸­)
      */
     private int mOffset;
 
@@ -65,8 +70,7 @@ public class NiceBubbleLayout extends FrameLayout {
     private int bubbleVOffsetBottom;
     private int bubbleVOffsetTop;
 
-    private int mBubbleWidth;
-    private int mBubbleHeight;
+
 
     public NiceBubbleLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -78,20 +82,20 @@ public class NiceBubbleLayout extends FrameLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs,
                 R.styleable.NiceBubbleLayout);
 
-        //±³¾°ÑÕÉ«
+        //èƒŒæ™¯é¢œè‰²
         int backGroundColor = ta.getColor(R.styleable.NiceBubbleLayout_backgroundColor, Color.WHITE);
 
-        //ÒõÓ°ÑÕÉ«
+        //é˜´å½±é¢œè‰²
         int shadowColor = ta.getColor(R.styleable.NiceBubbleLayout_shadowColor,
                 ContextCompat.getColor(context, R.color.md_black_alpha_50));
 
         int defShadowSize = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
                 4, getResources().getDisplayMetrics());
-        //ÒõÓ°³ß´ç
+        //é˜´å½±å°ºå¯¸
         int shadowSize = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_shadowSize, defShadowSize);
 
         mRadius = ta.getDimensionPixelSize(R.styleable.NiceBubbleLayout_radius, 0);
-        //Èı½ÇĞÎ·½Ïò
+        //ä¸‰è§’å½¢æ–¹å‘
         mDirection = ta.getInt(R.styleable.NiceBubbleLayout_direction, BOTTOM);
 
         mOffset = ta.getDimensionPixelOffset(R.styleable.NiceBubbleLayout_offset, 0);
@@ -113,7 +117,7 @@ public class NiceBubbleLayout extends FrameLayout {
         mDatumPoint = new Point();
 
         setWillNotDraw(false);
-//        //¹Ø±ÕÓ²¼ş¼ÓËÙ
+//        //å…³é—­ç¡¬ä»¶åŠ é€Ÿ
 //        setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
 
@@ -131,10 +135,10 @@ public class NiceBubbleLayout extends FrameLayout {
                     drawRightTriangle(canvas);
                     break;
                 case BOTTOM:
+                    Log.d(tag, " onDraw ");
                     drawBottomTriangle(canvas);
                     break;
             }
-            canvas.save();
     }
 
     private void drawLeftTriangle(Canvas canvas) {
@@ -203,11 +207,14 @@ public class NiceBubbleLayout extends FrameLayout {
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
+        Log.d(tag, " onSizeChanged w " + w + " h " + h );
         int childCount = this.getChildCount();
-
+        int mBubbleWidth = 0;
+        int mBubbleHeight = 0;
         for (int i = 0; i < childCount; i++) {
             int childWidth = this.getChildAt(i).getMeasuredWidth();
             int childHeight = this.getChildAt(i).getMeasuredHeight();
+            Log.d(tag , " childWidth " + childWidth);
             if (childWidth > mBubbleWidth) {
                 mBubbleWidth = childWidth;
             }
@@ -217,8 +224,8 @@ public class NiceBubbleLayout extends FrameLayout {
         }
         halfBubbleWidth = mBubbleWidth >> 1;
         halfBubbleHeight = mBubbleHeight >> 1;
+        setMeasuredDimension(mBubbleWidth, mBubbleHeight);
         initRect();
-
         switch (mDirection) {
             case LEFT:
                 mDatumPoint.x = getPaddingLeft();
@@ -237,16 +244,25 @@ public class NiceBubbleLayout extends FrameLayout {
                 mDatumPoint.y = h - getPaddingBottom();
                 break;
         }
-
         if (mOffset != 0) {
             applyOffset();
         }
+        Log.d(tag, " mBubbleWidth " + mBubbleWidth + " mBubbleHeight " + mBubbleHeight);
+
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int withSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+        Log.d(tag, " onMeasure  widthMeasureSpec " + withSpecSize + " heightMeasureSpec " + heightSpecSize);
     }
 
     /**
-     * ÉèÖÃÈı½ÇĞÎÆ«ÒÆÎ»ÖÃ
+     * è®¾ç½®ä¸‰è§’å½¢åç§»ä½ç½®
      *
-     * @param offset Æ«ÒÆÁ¿
+     * @param offset åç§»é‡
      */
     public void setTriangleOffset(int offset) {
         this.mOffset = offset;

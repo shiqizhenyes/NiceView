@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         goToNicePointer();
                     } else if (mainView.getId() == R.string.nice_circle_ripple) {
                         goToNiceCircleRipple();
+                    } else if (mainView.getId() == R.string.nice_bubble_layout) {
+                        goToNiceBubbleLayout();
                     }
                 }
             }
@@ -77,10 +79,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    private void goToNiceBubbleLayout() {
+        Intent intent = new Intent(this, NiceBubbleLayoutActivity.class);
+        startActivity(intent);
+    }
+
+
     private void displayViews() {
         mainViews.add(new MainView(getString(R.string.nice_pointer), R.string.nice_pointer));
         mainViews.add(new MainView(getString(R.string.nice_picker), R.string.nice_picker));
         mainViews.add(new MainView(getString(R.string.nice_circle_ripple), R.string.nice_circle_ripple));
+        mainViews.add(new MainView(getString(R.string.nice_bubble_layout), R.string.nice_bubble_layout));
+
         viewAdapter.notifyDataSetChanged();
     }
 
