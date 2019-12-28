@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="300dp"
-        android:padding="10dp"
+        android:padding="30dp"
         app:backgroundColor="@color/md_teal_300"
         app:radius="28dp"
         app:shadowColor="@color/md_teal_200">

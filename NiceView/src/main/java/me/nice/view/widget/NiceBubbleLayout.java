@@ -117,8 +117,7 @@ public class NiceBubbleLayout extends FrameLayout {
         mDatumPoint = new Point();
 
         setWillNotDraw(false);
-//        //关闭硬件加速
-//        setLayerType(LAYER_TYPE_SOFTWARE, null);
+
     }
 
     @Override
@@ -139,6 +138,7 @@ public class NiceBubbleLayout extends FrameLayout {
                     drawBottomTriangle(canvas);
                     break;
             }
+            canvas.save();
     }
 
     private void drawLeftTriangle(Canvas canvas) {
@@ -183,12 +183,13 @@ public class NiceBubbleLayout extends FrameLayout {
 
     private void drawBottomTriangle(Canvas canvas) {
         int triangularLength = getPaddingBottom();
-        if (triangularLength == 0) {
-            return;
-        }
+//        if (triangularLength == 0) {
+//            return;
+//        }
+        mPath.reset();
         mPath.addRoundRect(mRect, mRadius, mRadius, Path.Direction.CCW);
         mPath.moveTo(mRect.left + halfBubbleWidth + (triangularLength >> 1), mRect.bottom);
-        mPath.lineTo(mRect.left + halfBubbleWidth, mRect.bottom + (triangularLength >> 1));
+        mPath.lineTo(mRect.left + halfBubbleWidth, mRect.bottom +  (triangularLength >> 1));
         mPath.lineTo(mRect.left + halfBubbleWidth - (triangularLength >> 1), mRect.bottom);
         mPath.close();
         canvas.drawPath(mPath, mBorderPaint);
@@ -197,11 +198,11 @@ public class NiceBubbleLayout extends FrameLayout {
     private int halfBubbleWidth;
     private int halfBubbleHeight;
 
-    private void initRect() {
-        mRect.left = (getWidth() >> 1) - halfBubbleWidth + bubbleHOffsetStart - bubbleHOffsetEnd;
-        mRect.top = (getHeight() >> 1) - halfBubbleHeight + bubbleVOffsetTop - bubbleVOffsetBottom;
-        mRect.right = (getWidth() >> 1) + halfBubbleWidth + bubbleHOffsetStart - bubbleHOffsetEnd;
-        mRect.bottom = (getHeight() >> 1) + halfBubbleHeight + bubbleVOffsetTop - bubbleVOffsetBottom;
+    private void initRect(int w, int h) {
+        mRect.left = (w >> 1) - halfBubbleWidth + getPaddingLeft() + bubbleHOffsetStart - bubbleHOffsetEnd;
+        mRect.top = (h >> 1) - halfBubbleHeight + getPaddingTop() + bubbleVOffsetTop - bubbleVOffsetBottom;
+        mRect.right = (w >> 1) + halfBubbleWidth + getPaddingRight() + bubbleHOffsetStart - bubbleHOffsetEnd;
+        mRect.bottom = (h >> 1) + halfBubbleHeight + getPaddingBottom() + bubbleVOffsetTop - bubbleVOffsetBottom;
     }
 
     @Override
@@ -224,8 +225,8 @@ public class NiceBubbleLayout extends FrameLayout {
         }
         halfBubbleWidth = mBubbleWidth >> 1;
         halfBubbleHeight = mBubbleHeight >> 1;
-        setMeasuredDimension(mBubbleWidth, mBubbleHeight);
-        initRect();
+//        setMeasuredDimension(mBubbleWidth, mBubbleHeight);
+        initRect(mBubbleWidth, mBubbleHeight);
         switch (mDirection) {
             case LEFT:
                 mDatumPoint.x = getPaddingLeft();
@@ -244,9 +245,9 @@ public class NiceBubbleLayout extends FrameLayout {
                 mDatumPoint.y = h - getPaddingBottom();
                 break;
         }
-        if (mOffset != 0) {
-            applyOffset();
-        }
+//        if (mOffset != 0) {
+////            applyOffset();
+//        }
         Log.d(tag, " mBubbleWidth " + mBubbleWidth + " mBubbleHeight " + mBubbleHeight);
 
     }
@@ -256,6 +257,7 @@ public class NiceBubbleLayout extends FrameLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int withSpecSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+
         Log.d(tag, " onMeasure  widthMeasureSpec " + withSpecSize + " heightMeasureSpec " + heightSpecSize);
     }
 

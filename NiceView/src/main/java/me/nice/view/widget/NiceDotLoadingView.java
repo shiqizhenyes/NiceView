@@ -62,7 +62,6 @@ public class NiceDotLoadingView extends View {
         initScale();
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public NiceDotLoadingView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);

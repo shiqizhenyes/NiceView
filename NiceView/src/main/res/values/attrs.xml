@@ -88,6 +88,7 @@
         <attr name="shadowColor" format="color" />
         <attr name="shadowSize" format="dimension" />
         <attr name="radius" format="dimension" />
+<!--        <attr name="triangular" format="dimension"/>-->
         <attr name="direction" format="enum">
             <enum name="left" value="1" />
             <enum name="top" value="2" />
