@@ -363,7 +363,7 @@ public class NiceWheelDayPicker extends LinearLayout {
 
         final String itemText = adapter.getItemText(itemPosition);
 
-        final Calendar todayCalendar = DateHelper.getCalendarOfDate(new Date());
+        final Calendar todayCalendar = DateHelper.getCalendarOfDateWithOutHourMinutesSecond(new Date());
 
         final int todayPosition = adapter.getData().indexOf(getTodayText());
 
@@ -387,10 +387,9 @@ public class NiceWheelDayPicker extends LinearLayout {
             }
         }
         if (date != null) {
-            //try to know the year
-            final Calendar dateCalendar = DateHelper.getCalendarOfDate(date);
-            if (getNowText().equals(itemText)) { }
-            else {
+            final Calendar dateCalendar = DateHelper.getCalendarOfDateWithOutHourMinutesSecond(date);
+            if (!(getNowText().equals(itemText)) && !(getTomorrowText().equals(itemText)) &&
+                    !(getTheDayAfterTomorrowText().equals(itemText))) {
                 todayCalendar.add(Calendar.DATE, (itemPosition - todayPosition));
             }
             dateCalendar.set(Calendar.YEAR, todayCalendar.get(Calendar.YEAR));

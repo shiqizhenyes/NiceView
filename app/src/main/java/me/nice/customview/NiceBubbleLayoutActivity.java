@@ -62,6 +62,7 @@ public class NiceBubbleLayoutActivity extends AppCompatActivity
                 niceText.setText(R.string.nice_picker);
             }
             niceDotLoadingView.setVisibility(View.INVISIBLE);
+            niceDotLoadingView.startAnim();
         } else {
             hide = true;
             niceText.setVisibility(View.INVISIBLE);

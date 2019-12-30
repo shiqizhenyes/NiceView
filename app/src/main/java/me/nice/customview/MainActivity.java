@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(View view, int position, MainView mainView) {
                 if (view.getId() == R.id.mainViewButton) {
-                    if (mainView.getId() == R.string.nice_pointer) {
+                    if (mainView.getId() == R.string.nice_picker) {
+                        goToNicePicker();
+                    } else if (mainView.getId() == R.string.nice_pointer) {
                         goToNicePointer();
                     } else if (mainView.getId() == R.string.nice_circle_ripple) {
                         goToNiceCircleRipple();
@@ -67,6 +69,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         mainRecyclerView.setLayoutManager(gridLayoutManager);
         mainRecyclerView.setAdapter(viewAdapter);
+    }
+
+
+
+    private void goToNicePicker() {
+        Intent intent = new Intent(this, NicePickerActivity.class);
+        startActivity(intent);
     }
 
     private void goToNicePointer() {

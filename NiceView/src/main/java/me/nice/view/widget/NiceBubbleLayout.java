@@ -134,7 +134,6 @@ public class NiceBubbleLayout extends FrameLayout {
                     drawRightTriangle(canvas);
                     break;
                 case BOTTOM:
-                    Log.d(tag, " onDraw ");
                     drawBottomTriangle(canvas);
                     break;
             }
@@ -183,9 +182,6 @@ public class NiceBubbleLayout extends FrameLayout {
 
     private void drawBottomTriangle(Canvas canvas) {
         int triangularLength = getPaddingBottom();
-//        if (triangularLength == 0) {
-//            return;
-//        }
         mPath.reset();
         mPath.addRoundRect(mRect, mRadius, mRadius, Path.Direction.CCW);
         mPath.moveTo(mRect.left + halfBubbleWidth + (triangularLength >> 1), mRect.bottom);
@@ -225,7 +221,6 @@ public class NiceBubbleLayout extends FrameLayout {
         }
         halfBubbleWidth = mBubbleWidth >> 1;
         halfBubbleHeight = mBubbleHeight >> 1;
-//        setMeasuredDimension(mBubbleWidth, mBubbleHeight);
         initRect(mBubbleWidth, mBubbleHeight);
         switch (mDirection) {
             case LEFT:
@@ -245,11 +240,9 @@ public class NiceBubbleLayout extends FrameLayout {
                 mDatumPoint.y = h - getPaddingBottom();
                 break;
         }
-//        if (mOffset != 0) {
-////            applyOffset();
-//        }
-        Log.d(tag, " mBubbleWidth " + mBubbleWidth + " mBubbleHeight " + mBubbleHeight);
-
+        if (mOffset != 0) {
+            applyOffset();
+        }
     }
 
     @Override

@@ -160,11 +160,8 @@ public class NiceDotLoadingView extends View {
             canvas.save();
             float translateX = circleX + dotSpace * i +
                     dotRadius * 2 * i;
-
             canvas.translate(translateX, circleY);
-
             canvas.scale(scaleFloats[i], scaleFloats[i]);
-
             canvas.drawCircle(0, 0, dotRadius, dotPaint);
             canvas.restore();
         }

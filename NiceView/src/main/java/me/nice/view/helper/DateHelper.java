@@ -6,6 +6,16 @@ import java.util.Locale;
 
 public class DateHelper {
 
+    public static Calendar getCalendarOfDateWithOutHourMinutesSecond(Date date){
+        final Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.set(Calendar.SECOND, 0);
+        return calendar;
+    }
+
 
     public static Calendar getCalendarOfDate(Date date){
         final Calendar calendar = Calendar.getInstance(Locale.getDefault());
