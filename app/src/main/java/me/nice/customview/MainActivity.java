@@ -23,6 +23,7 @@ import me.nice.view.dialog.NiceDateAndTimePickerDialog;
 import me.nice.view.inter.OnDateSelectedListener;
 import me.nice.view.inter.OnLeftTitleClickListener;
 import me.nice.view.inter.OnRightTitleClickListener;
+import me.nice.view.widget.NiceRadioButton;
 import me.nice.view.widget.wheel.NiceWheelYearPicker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         goToNiceCircleRipple();
                     } else if (mainView.getId() == R.string.nice_bubble_layout) {
                         goToNiceBubbleLayout();
+                    } else if (mainView.getId() == R.string.nice_radio_button) {
+                        goToRadioButton();
                     }
                 }
             }
@@ -93,12 +96,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    private void goToRadioButton() {
+        Intent intent = new Intent(this, NiceRadioButtonActivity.class);
+        startActivity(intent);
+    }
 
     private void displayViews() {
         mainViews.add(new MainView(getString(R.string.nice_pointer), R.string.nice_pointer));
         mainViews.add(new MainView(getString(R.string.nice_picker), R.string.nice_picker));
         mainViews.add(new MainView(getString(R.string.nice_circle_ripple), R.string.nice_circle_ripple));
         mainViews.add(new MainView(getString(R.string.nice_bubble_layout), R.string.nice_bubble_layout));
+        mainViews.add(new MainView(getString(R.string.nice_radio_button), R.string.nice_radio_button));
 
         viewAdapter.notifyDataSetChanged();
     }

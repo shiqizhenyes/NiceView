@@ -5,6 +5,7 @@
     <string name="nice_picker" translatable="false">Nice Picker</string>
     <string name="nice_circle_ripple" translatable="false">Nice circleRipple</string>
     <string name="nice_bubble_layout" translatable="false">Nice BubbleLayout</string>
+    <string name="nice_radio_button" translatable="false">Nice RadioButton</string>
 
     <string name="change" translatable="false">change</string>
 

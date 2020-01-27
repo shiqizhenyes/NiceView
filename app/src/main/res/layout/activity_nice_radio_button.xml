@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NiceRadioButtonActivity">
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioOne"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/md_green_60"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_green_500"
+        app:nBorderColor="@color/md_red_500"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:nCheck="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/niceRadioTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_pink_500"
+        app:nBorderColor="@color/md_pink_500"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/niceRadioThree"
+        app:layout_constraintTop_toBottomOf="@+id/niceRadioOne"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_blue_500"
+        app:nBorderColor="@color/md_blue_500"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/niceRadioFour"
+        app:layout_constraintTop_toBottomOf="@+id/niceRadioTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_teal_A400"
+        app:nBorderColor="@color/md_teal_A400"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/niceRadioFive"
+        app:layout_constraintTop_toBottomOf="@+id/niceRadioThree"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioFive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_green_500"
+        app:nBorderColor="@color/md_green_500"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/niceRadioSix"
+        app:layout_constraintTop_toBottomOf="@+id/niceRadioFour"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioSix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_yellow_400"
+        app:nBorderColor="@color/md_yellow_400"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/niceRadioSeven"
+        app:layout_constraintTop_toBottomOf="@+id/niceRadioFive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <me.nice.view.widget.NiceRadioButton
+        android:id="@+id/niceRadioSeven"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:nBorderSize="2dp"
+        app:nButtonColor="@color/md_deepOrange_600"
+        app:nBorderColor="@color/md_deepOrange_600"
+        app:nTextColor="@color/md_black"
+        app:nTextSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/niceRadioSix"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

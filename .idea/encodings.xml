@@ -1,12 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/dialog/NiceDateAndTimePicker.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/dialog/NiceDateAndTimePickerDialog.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/helper/DateHelper.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/widget/NiceBubbleLayout.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/widget/NiceDotLoadingView.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/widget/NicePointerView.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/NiceView/src/main/java/me/nice/view/widget/wheel/NiceWheelMinutePicker.java" charset="UTF-8" />
-  </component>
+  <component name="Encoding" addBOMForNewFiles="with NO BOM" />
 </project>

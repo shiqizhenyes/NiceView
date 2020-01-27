@@ -123,4 +123,14 @@
         <attr name="niceStrokeColor" format="color"/>
     </declare-styleable>
 
+    <declare-styleable name="NiceRadioButton">
+        <attr name="nBorderSize" format="dimension"/>
+        <attr name="nButtonColor" format="color"/>
+        <attr name="nBorderColor" format="color"/>
+        <attr name="nText" format="string"/>
+        <attr name="nTextColor" format="color"/>
+        <attr name="nTextSize" format="dimension"/>
+        <attr name="nCheck" format="boolean"/>
+    </declare-styleable>
+
 </resources>
