@@ -28,13 +28,11 @@ import me.nice.view.widget.wheel.NiceWheelYearPicker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
     private final String TAG = MainActivity.class.getSimpleName();
 
     private RecyclerView mainRecyclerView;
 
     private List<MainView> mainViews;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

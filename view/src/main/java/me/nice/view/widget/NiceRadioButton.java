@@ -102,6 +102,7 @@ public class NiceRadioButton extends View {
         textPaint = new Paint();
         textPaint.setColor(textColor);
         textPaint.setAntiAlias(true);
+        textPaint.setTextSize(textSize);
     }
 
     private int width;
@@ -117,7 +118,7 @@ public class NiceRadioButton extends View {
 
         if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
             int maxSide = Math.max(radius * 2 + borderSize * 2
-                    + DensityUtil.dip2px(borderSpace), textSize);
+                    + DensityUtil.dip2px(borderSpace) * 2, textSize);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 width = radius * 2 + borderSize * 2 + DensityUtil.dip2px(borderSpace) * 2 +
                         textLength * textSize + getPaddingStart() + getPaddingEnd();
@@ -154,14 +155,16 @@ public class NiceRadioButton extends View {
             width = widthSpecSize;
             height = heightSpecSize;
         }
-
         buttonSide = radius * 2 + borderSpace * 2 + borderSize * 2;
-        initRectF();
+        initRectF(buttonSide);
         setMeasuredDimension(width, height);
     }
 
-    private void initRectF() {
-        rect.set(0, height >> 1,100 , 100);
+    private void initRectF(int buttonSide) {
+        rect.set(0,
+                buttonSide >> 1,
+                buttonSide + borderSize - DensityUtil.dip2px(borderSpace),
+                buttonSide - borderSize - DensityUtil.dip2px(borderSpace));
 //        rect.set(width >> 1 - radius,
 //                width >> 1 - radius - DensityUtil.dip2px(borderSpace),
 //                width - DensityUtil.dip2px(borderSpace),
@@ -180,18 +183,25 @@ public class NiceRadioButton extends View {
 
     private void drawBorder(Canvas canvas) {
         canvas.drawRect(rect, borderPaint);
-//        canvas.drawArc(rect, startAngle, sweepAngle,false, borderPaint);
+        canvas.drawArc(rect, startAngle, sweepAngle,false, borderPaint);
     }
 
     private void drawButton(Canvas canvas) {
         canvas.drawCircle(width >> 1, height >> 1, radius, buttonPaint);
     }
 
+    private void drawText(Canvas canvas) {
+        canvas.drawText(text, radius * 2 + borderSize * 2 + DensityUtil.dip2px(borderSpace) * 2,
+                height, textPaint);
+    }
+
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         drawButton(canvas);
         drawBorder(canvas);
+        drawText(canvas);
     }
 
 

@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NiceRadioButtonActivity">
+    <!--        app:nText="@string/app_name"-->
 
     <me.nice.view.widget.NiceRadioButton
         android:id="@+id/niceRadioOne"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@color/md_green_60"
-        app:nBorderSize="2dp"
+        app:nBorderSize="1dp"
         app:nButtonColor="@color/md_green_500"
         app:nBorderColor="@color/md_red_500"
         app:nTextColor="@color/md_black"

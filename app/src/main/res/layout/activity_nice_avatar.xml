@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".NiceAvatarActivity">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mainRecyclerView"
+    <me.nice.view.widget.NiceAvatar
+        android:id="@+id/nAvatar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:nCount="2"
+        app:nBorderColor="@color/md_amber_300"
+        app:nBorderSize="4dp"
+        app:nRadius="50dp"/>
 
 </android.support.constraint.ConstraintLayout>
