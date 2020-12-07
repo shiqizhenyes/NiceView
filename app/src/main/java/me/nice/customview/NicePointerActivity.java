@@ -1,9 +1,10 @@
 package me.nice.customview;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import me.nice.view.widget.NiceDotLoadingView;
 import me.nice.view.widget.NicePointerView;

@@ -1,9 +1,10 @@
 package me.nice.view.dialog;
 
 import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -88,7 +89,7 @@ public abstract class BaseDialog {
         this.mainColor = mainColor;
     }
 
-    public void setTitleTextColor(@NonNull @ColorInt int titleTextColor) {
+    public void setTitleTextColor(@ColorInt int titleTextColor) {
         this.titleTextColor = titleTextColor;
     }
 

@@ -1,12 +1,14 @@
 package me.nice.view.dialog;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.design.widget.BottomSheetDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;

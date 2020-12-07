@@ -68,7 +68,7 @@
 
     <declare-styleable name="NiceDotView">
         <attr name="dotColor"/>
-        <attr name="dotPadding"/>
+<!--        <attr name="dotPadding"/>-->
     </declare-styleable>
 
     <declare-styleable name="NicePopLayout">

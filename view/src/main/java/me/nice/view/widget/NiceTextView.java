@@ -7,16 +7,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.support.annotation.Nullable;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import me.nice.view.R;
 
-public class NiceTextView extends android.support.v7.widget.AppCompatTextView {
+public class NiceTextView extends AppCompatTextView {
 
     private TextPaint strokePaint;
 

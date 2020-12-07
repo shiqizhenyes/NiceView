@@ -10,12 +10,14 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import me.nice.view.R;
 
-public class NiceDotView extends android.support.v7.widget.AppCompatTextView {
+public class NiceDotView extends AppCompatTextView {
 
     private Paint mPaint;
-    private int mDotPadding;
+    private int mDotPadding = DEFAULT_PADDING;
 
     private static final String DEFAULT_OVER_TEXT = "...";
     private static final int DEFAULT_PADDING = 3;
@@ -31,8 +33,8 @@ public class NiceDotView extends android.support.v7.widget.AppCompatTextView {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NiceDotView, 0, 0);
         int color = typedArray.getColor(R.styleable.NiceDotView_dotColor, Color.RED);
         float density = getResources().getDisplayMetrics().density;
-        mDotPadding = typedArray.getDimensionPixelSize(R.styleable.NiceDotView_dotPadding,
-                (int) (DEFAULT_PADDING * density));
+//        mDotPadding = typedArray.getDimensionPixelSize(R.styleable.NiceDotView_dotPadding,
+//                (int) (DEFAULT_PADDING * density));
         typedArray.recycle();
 
         mPaint = new Paint();

@@ -3,13 +3,14 @@ package me.nice.customview;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -105,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainViews.add(new MainView(getString(R.string.nice_circle_ripple), R.string.nice_circle_ripple));
         mainViews.add(new MainView(getString(R.string.nice_bubble_layout), R.string.nice_bubble_layout));
         mainViews.add(new MainView(getString(R.string.nice_radio_button), R.string.nice_radio_button));
-
         viewAdapter.notifyDataSetChanged();
     }
 

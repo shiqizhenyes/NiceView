@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(30)
     buildToolsVersion("28.0.3")
     defaultConfig {
-        minSdkVersion(19)
-        targetSdkVersion(26)
+        minSdkVersion(22)
+        targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "android.test.runner.AndroidJUnitRunner"
@@ -24,9 +24,15 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+    sourceSets {
+        getByName("main") {
+            java {
+                srcDir("src/main/java")
+                srcDir("src/main/kotlin")
+            }
+        }
+    }
 }
-
-
 
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'com.jfrog.bintray'
@@ -37,10 +43,14 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*jar"))))
+    implementation("com.google.android.material:material:1.2.1")
     testImplementation("junit:junit:4.13.1")
-    androidTestImplementation("com.android.support.test:runner:1.0.2")
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
-    implementation("com.android.support:design:${rootProject.extra["supportVersion"]}")
+    androidTestImplementation("androidx.test.ext:junit:1.1.2")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+    implementation("androidx.core:core:1.3.2")
+    implementation("androidx.interpolator:interpolator:1.0.0")
+    implementation ("androidx.appcompat:appcompat:1.2.0")
+//    implementation("com.android.support:design:${rootProject.extra["supportVersion"]}")
 }
 
 // 生成jar包的task，不需要修改。

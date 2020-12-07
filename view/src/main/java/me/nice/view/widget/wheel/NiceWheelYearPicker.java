@@ -2,7 +2,6 @@ package me.nice.view.widget.wheel;
 
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 
 

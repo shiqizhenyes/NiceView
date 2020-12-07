@@ -1,8 +1,9 @@
 package me.nice.customview;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import me.nice.customview.dialog.NiceChooseTimeDialog;
 

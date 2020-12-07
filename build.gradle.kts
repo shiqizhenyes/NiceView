@@ -12,7 +12,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:4.1.1")
-        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
 //        classpath("com.github.dcendents:android-maven-gradle-plugin:2.0")
 //        classpath("com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3")
     }

@@ -1,7 +1,5 @@
 package me.nice.customview;
 
-import android.support.v4.view.animation.FastOutLinearInInterpolator;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -9,6 +7,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import me.nice.view.widget.NiceBubbleLayout;
 import me.nice.view.widget.NiceDotLoadingView;
