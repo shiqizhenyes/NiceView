@@ -1,4 +1,4 @@
-package me.nice.customview;
+package me.nice.samples;
 
 import org.junit.Test;
 

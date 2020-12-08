@@ -1,4 +1,4 @@
-package me.nice.customview.bean;
+package me.nice.samples.bean;
 
 public class MainView {
 

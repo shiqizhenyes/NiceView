@@ -1,12 +1,9 @@
-package me.nice.customview;
+package me.nice.samples;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
-import me.nice.view.widget.NiceCircleRippleView;
-import me.nice.view.widget.NiceCircleView;
 
 public class NiceCircleRippleViewActivity extends AppCompatActivity {
 

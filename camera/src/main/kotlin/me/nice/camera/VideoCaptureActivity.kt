@@ -121,7 +121,6 @@ class VideoCaptureActivity : AppCompatActivity() {
                 })
     }
 
-
     @SuppressLint("RestrictedApi")
     private fun stopRecord() {
         videoCapture.stopRecording()

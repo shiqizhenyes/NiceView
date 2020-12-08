@@ -71,7 +71,6 @@ public class NiceRadioButton extends View {
         initPaint();
     }
 
-
     private void initAttrs(TypedArray typedArray) {
         borderSize = typedArray.getDimensionPixelSize(R.styleable.NiceRadioButton_nBorderSize, 5);
         borderColor = typedArray.getColor(R.styleable.NiceRadioButton_nBorderColor, primaryColor);

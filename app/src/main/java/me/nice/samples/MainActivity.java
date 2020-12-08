@@ -1,31 +1,23 @@
-package me.nice.customview;
+package me.nice.samples;
 
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-import me.nice.customview.adapter.MainViewAdapter;
-import me.nice.customview.bean.MainView;
-import me.nice.customview.inter.OnItemClickListener;
-import me.nice.view.dialog.NiceDateAndTimePickerDialog;
-import me.nice.view.inter.OnDateSelectedListener;
-import me.nice.view.inter.OnLeftTitleClickListener;
-import me.nice.view.inter.OnRightTitleClickListener;
-import me.nice.view.widget.NiceRadioButton;
-import me.nice.view.widget.wheel.NiceWheelYearPicker;
+import me.nice.camera.Camera2RecordVideoActivity;
+import me.nice.camera.RecordVideoActivity;
+import me.nice.camera.VideoCaptureActivity;
+import me.nice.samples.adapter.MainViewAdapter;
+import me.nice.samples.bean.MainView;
+import me.nice.samples.inter.OnItemClickListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -63,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         goToNiceBubbleLayout();
                     } else if (mainView.getId() == R.string.nice_radio_button) {
                         goToRadioButton();
+                    } else if (mainView.getId() == R.string.nice_camera) {
+                        goToCamera();
                     }
                 }
             }
@@ -100,15 +94,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    private void goToCamera() {
+        startActivity(new Intent(this, Camera2RecordVideoActivity.class));
+    }
+
     private void displayViews() {
         mainViews.add(new MainView(getString(R.string.nice_pointer), R.string.nice_pointer));
         mainViews.add(new MainView(getString(R.string.nice_picker), R.string.nice_picker));
         mainViews.add(new MainView(getString(R.string.nice_circle_ripple), R.string.nice_circle_ripple));
         mainViews.add(new MainView(getString(R.string.nice_bubble_layout), R.string.nice_bubble_layout));
         mainViews.add(new MainView(getString(R.string.nice_radio_button), R.string.nice_radio_button));
+        mainViews.add(new MainView(getString(R.string.nice_camera), R.string.nice_camera));
         viewAdapter.notifyDataSetChanged();
     }
-
 
     @Override
     public void onClick(View v) {

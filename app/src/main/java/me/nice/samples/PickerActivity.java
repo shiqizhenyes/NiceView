@@ -1,4 +1,4 @@
-package me.nice.customview;
+package me.nice.samples;
 
 import android.os.Bundle;
 import android.util.Log;

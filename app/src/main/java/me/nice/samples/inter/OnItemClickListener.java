@@ -1,4 +1,4 @@
-package me.nice.customview.inter;
+package me.nice.samples.inter;
 
 import android.view.View;
 

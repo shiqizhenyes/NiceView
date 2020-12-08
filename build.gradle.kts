@@ -4,6 +4,7 @@ buildscript {
 
     val kotlinVersion = "1.4.20"
     val supportVersion by extra("28.0.0")
+    val kotlin_version by extra("1.4.21")
 
     repositories {
         google()

@@ -118,10 +118,7 @@ class Camera2RecordVideoActivity: AppCompatActivity() {
                             }, cameraHandler)
                         }
                     }
-
                 }
-
-
             }
 
             override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {

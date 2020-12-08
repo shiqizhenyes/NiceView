@@ -1,11 +1,11 @@
-package me.nice.customview;
+package me.nice.samples;
 
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import me.nice.customview.dialog.NiceChooseTimeDialog;
+import me.nice.samples.dialog.NiceChooseTimeDialog;
 
 public class NicePickerActivity extends AppCompatActivity {
 

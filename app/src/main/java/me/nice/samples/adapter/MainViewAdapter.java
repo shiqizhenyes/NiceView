@@ -1,10 +1,8 @@
-package me.nice.customview.adapter;
+package me.nice.samples.adapter;
 
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import me.nice.customview.R;
-import me.nice.customview.bean.MainView;
-import me.nice.customview.inter.OnItemClickListener;
+import me.nice.samples.R;
+import me.nice.samples.bean.MainView;
+import me.nice.samples.inter.OnItemClickListener;
 
 public class MainViewAdapter extends RecyclerView.Adapter<MainViewAdapter.MainViewViewHolder> {
 

@@ -27,11 +27,20 @@ android {
     sourceSets {
         getByName("main") {
             java {
-                srcDir("src/main/java")
-                srcDir("src/main/kotlin")
+                setSrcDirs(listOf("src/main/java", "src/main/kotlin"))
             }
         }
     }
+
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_1_8)
+        targetCompatibility(JavaVersion.VERSION_1_8)
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
 }
 
 //apply plugin: 'com.github.dcendents.android-maven'

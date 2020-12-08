@@ -1,11 +1,7 @@
-package me.nice.customview.dialog;
+package me.nice.samples.dialog;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 
 import androidx.annotation.StringRes;
@@ -13,7 +9,7 @@ import java.lang.ref.WeakReference;
 import java.util.Calendar;
 import java.util.Date;
 
-import me.nice.customview.R;
+import me.nice.samples.R;
 import me.nice.view.dialog.NiceDateAndTimePickerDialog;
 import me.nice.view.helper.DateHelper;
 import me.nice.view.inter.OnDateSelectedListener;

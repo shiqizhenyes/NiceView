@@ -25,9 +25,12 @@ import androidx.lifecycle.LifecycleOwner
 import com.google.common.util.concurrent.ListenableFuture
 import java.io.File
 
-private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
 
 class RecordVideoActivity : AppCompatActivity() {
+
+    companion object {
+        const val REQUEST_RECORD_AUDIO_PERMISSION = 200
+    }
 
     private lateinit var recordVideoPreviewView: SurfaceView
 
