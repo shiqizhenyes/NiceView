@@ -132,6 +132,8 @@ class Camera2Helper(private val context: Context) {
     private val cameraPermissionRequestCode: Int = 0x9999
 
 
+    private var usingCameraDevice : CameraDevice? = null
+
     /**
      * 开启相机
      * ActivityCompat.requestPermissions(context, permissions, cameraPermissionRequestCode)
@@ -144,7 +146,10 @@ class Camera2Helper(private val context: Context) {
             if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.P) {
                 cameraManager.openCamera(
                     cameraInfo.cameraId, object : CameraDevice.StateCallback() {
-                        override fun onOpened(camera: CameraDevice) = cCont.resume(camera)
+                        override fun onOpened(camera: CameraDevice) {
+                            usingCameraDevice = camera
+                            cCont.resume(usingCameraDevice!!)
+                        }
 
                         override fun onDisconnected(camera: CameraDevice) {
                             Log.w(tag, "Camera ${cameraInfo.cameraId} has been disconnected")
@@ -179,7 +184,7 @@ class Camera2Helper(private val context: Context) {
     /**
      * 开启相机
      */
-    internal suspend fun openCameraNew(cameraInfo: CameraInfo):
+    suspend fun openCameraNew(cameraInfo: CameraInfo):
             CameraDevice = suspendCancellableCoroutine { cCont ->
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
             == PackageManager.PERMISSION_GRANTED
@@ -187,7 +192,10 @@ class Camera2Helper(private val context: Context) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
                 cameraManager.openCamera(cameraInfo.cameraId, context.mainExecutor,
                     object : CameraDevice.StateCallback() {
-                        override fun onOpened(camera: CameraDevice) = cCont.resume(camera)
+                        override fun onOpened(camera: CameraDevice) {
+                            usingCameraDevice = camera
+                            cCont.resume(usingCameraDevice!!)
+                        }
                         override fun onDisconnected(camera: CameraDevice) {
                             Log.w(tag, "Camera ${cameraInfo.cameraId} has been disconnected")
                             if (context is Activity) {
@@ -216,25 +224,33 @@ class Camera2Helper(private val context: Context) {
         }
     }
 
+
+    private var usingCaptureSession: CameraCaptureSession? = null
+    private var usingTargets: List<Surface>? = null
+
     /**
      * 创建采集会话
      * SESSION_REGULAR
      * SESSION_HIGH_SPEED
      */
-    internal suspend fun createCaptureSession(device: CameraDevice,
+    suspend fun createCaptureSession(device: CameraDevice,
                                              targets: List<Surface>,
                                              handler: Handler? =null): CameraCaptureSession
     = suspendCoroutine { continuation ->
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
             val targetsConfigurations = mutableListOf<OutputConfiguration>()
-            targets.forEach { t ->
+            usingTargets = targets
+            usingTargets!!.forEach { t ->
                 targetsConfigurations.add(OutputConfiguration(t))
             }
             val sessionConfiguration = SessionConfiguration(SESSION_REGULAR,
                 targetsConfigurations, context.mainExecutor,
                 object : CameraCaptureSession.StateCallback() {
 
-                    override fun onConfigured(session: CameraCaptureSession) = continuation.resume(session)
+                    override fun onConfigured(session: CameraCaptureSession) {
+                        usingCaptureSession = session
+                        continuation.resume(usingCaptureSession!!)
+                    }
 
                     override fun onConfigureFailed(session: CameraCaptureSession) {
                         val exc = RuntimeException("Camera ${device.id} session configuration failed")
@@ -245,7 +261,11 @@ class Camera2Helper(private val context: Context) {
             device.createCaptureSession(sessionConfiguration)
         } else {
             device.createCaptureSession(targets, object : CameraCaptureSession.StateCallback() {
-                override fun onConfigured(session: CameraCaptureSession) = continuation.resume(session)
+                override fun onConfigured(session: CameraCaptureSession) {
+                    usingCaptureSession = session
+                    continuation.resume(usingCaptureSession!!)
+                }
+
                 override fun onConfigureFailed(session: CameraCaptureSession) {
                     val exc = RuntimeException("Camera ${device.id} session configuration failed")
                     Log.e(tag, exc.message, exc)
@@ -270,7 +290,7 @@ class Camera2Helper(private val context: Context) {
     /**
      * 创建录制捕捉请求
      */
-    internal fun createRecordCaptureRequest(captureSession: CameraCaptureSession,
+    fun createRecordCaptureRequest(captureSession: CameraCaptureSession,
                                             fpsRange: Range<Int>,
                                             targets: List<Surface>): CaptureRequest {
         return captureSession.device.createCaptureRequest(CameraDevice.TEMPLATE_RECORD).apply {
@@ -282,29 +302,18 @@ class Camera2Helper(private val context: Context) {
     }
 
 
-//    private fun initializeCamera() {
-//        GlobalScope.launch {
-//            usingCameraInfo?.let { openCameraNew(it) }
-//        }
-//    }
-
-//    override fun surfaceCreated(holder: SurfaceHolder) {
-//        Log.d(tag, "surfaceCreated")
-//        initDefaultCamera()
-//        val previewSize = getPreviewOutputSize(display =
-//        (surfaceView as AutoFitSurfaceView).display,
-//                characteristics = this.characteristics, SurfaceHolder::class.java)
-//        surfaceView.setAspectRatio(previewSize.width, previewSize.height)
-//        surfaceView.post {
-//            initializeCamera()
-//        }
-//    }
-
-//    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
-//    }
-//
-//    override fun surfaceDestroyed(holder: SurfaceHolder) {
-//    }
+    /**
+     * 关闭相机
+     */
+    fun closeCamera() {
+        usingTargets?.let { lsf ->
+            lsf.forEach { sf ->
+                sf.release()
+            }
+        }
+        usingCaptureSession?.close()
+        usingCameraDevice?.close()
+    }
 
 
 }

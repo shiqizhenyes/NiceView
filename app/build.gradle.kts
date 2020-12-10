@@ -52,7 +52,7 @@ android {
 dependencies {
     val kotlinVersion = "1.4.20"
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
     testImplementation("junit:junit:4.13.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")

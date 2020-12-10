@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void goToCamera() {
-        startActivity(new Intent(this, Camera2RecordVideoActivity.class));
+        startActivity(new Intent(this, NiceCameraActivity.class));
+//        startActivity(new Intent(this, Camera2RecordVideoActivity.class));
     }
 
     private void displayViews() {

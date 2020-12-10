@@ -108,6 +108,9 @@ class Camera2RecordVideoActivity: AppCompatActivity() {
 //                            val recorderSurface = camera2Helper.
                             val captureSession = camera2Helper.createCaptureSession(device = cameraDevice,
                                     targets = targets, cameraHandler)
+//                            captureSession.close()
+//                            cameraDevice.close()
+//                            previewSurface.release()
 //                            val captureRequest = camera2Helper.createCaptureRequest(captureSession = captureSession,
 //                                    targets = targets)
                             val captureRequest = camera2Helper.createRecordCaptureRequest(captureSession = captureSession,
@@ -128,7 +131,11 @@ class Camera2RecordVideoActivity: AppCompatActivity() {
             }
 
         })
-
     }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
 
 }

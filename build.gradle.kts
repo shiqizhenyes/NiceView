@@ -3,12 +3,14 @@
 buildscript {
 
     val kotlinVersion = "1.4.20"
-    val supportVersion by extra("28.0.0")
-    val kotlin_version by extra("1.4.21")
+//    val supportVersion by extra("28.0.0")
+//    val kotlin_version by extra("1.4.21")
 
     repositories {
-        google()
+//        google()
         jcenter()
+        maven(url = "http://127.0.0.1:8081/repository/maven-central/")
+        maven(url = "http://127.0.0.1:8081/repository/google/")
     }
 
     dependencies {
@@ -21,9 +23,11 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+//        google()
         jcenter()
         maven(url = "https://novoda.bintray.com/snapshots")
+        maven(url = "http://127.0.0.1:8081/repository/maven-central/")
+        maven(url = "http://127.0.0.1:8081/repository/google/")
     }
 }
 
