@@ -296,8 +296,8 @@ class Camera2Helper(private val context: Context) {
         return captureSession.device.createCaptureRequest(CameraDevice.TEMPLATE_RECORD).apply {
             targets.forEach { t ->
                 addTarget(t)
-                set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, fpsRange)
             }
+            set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, fpsRange)
         }.build()
     }
 

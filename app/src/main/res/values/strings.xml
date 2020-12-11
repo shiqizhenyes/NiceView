@@ -9,6 +9,7 @@
     <string name="nice_camera" translatable="false">Nice Camera</string>
 
     <string name="change" translatable="false">change</string>
-
+    <string name="stop">Stop</string>
+    <string name="recording">Recording</string>
 
 </resources>

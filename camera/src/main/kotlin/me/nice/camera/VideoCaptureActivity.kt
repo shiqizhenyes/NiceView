@@ -109,6 +109,7 @@ class VideoCaptureActivity : AppCompatActivity() {
     private fun startRecord() {
         val outputFileOptions = VideoCapture.OutputFileOptions.Builder(File(fileName))
         videoCapture.startRecording(outputFileOptions.build(), ContextCompat.getMainExecutor(this),
+
                 object: VideoCapture.OnVideoSavedCallback{
                     override fun onVideoSaved(outputFileResults: VideoCapture.OutputFileResults) {
                         Log.d("videoCapture zack", "" + outputFileResults.savedUri.toString())
@@ -119,6 +120,7 @@ class VideoCaptureActivity : AppCompatActivity() {
                     }
 
                 })
+
     }
 
     @SuppressLint("RestrictedApi")

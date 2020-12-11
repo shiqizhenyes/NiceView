@@ -10,14 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NiceCameraActivity"/>
+        <activity android:name=".NiceCameraActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".NiceAvatarActivity"/>
         <activity android:name=".NiceRadioButtonActivity" />
         <activity android:name=".NicePickerActivity" />
         <activity android:name=".NiceBubbleLayoutActivity" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
