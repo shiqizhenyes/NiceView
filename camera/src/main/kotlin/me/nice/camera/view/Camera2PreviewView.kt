@@ -4,10 +4,7 @@ import android.content.Context
 import android.hardware.camera2.CameraCaptureSession
 import android.hardware.camera2.CaptureRequest
 import android.net.Uri
-import android.os.Build
-import android.os.Environment
-import android.os.Handler
-import android.os.HandlerThread
+import android.os.*
 import android.util.AttributeSet
 import android.util.Log
 import android.util.Range
@@ -74,30 +71,43 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
 
     var lifecycleScope: LifecycleCoroutineScope? = null
 
-    private val cameraThread: HandlerThread = HandlerThread("cameraThread").apply {
-        start()
-    }
+    private lateinit var cameraThread: HandlerThread
 
-    private val cameraHandler = Handler(cameraThread.looper)
+    private lateinit var cameraHandler: Handler
 
     private lateinit var mediaRecorderHelper: MediaRecorderHelper
     private lateinit var mediaRecordSurface: Surface
+    private lateinit var previewSurface: Surface
 
     init {
         previewView.holder.addCallback(previewViewHolderCallback)
         camera2Helper.enumerateVideoCameras()
         camera2Helper.initDefaultCamera()
         if (captureMode == CAPTURE_VIDEO) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                mediaRecorderHelper = MediaRecorderHelper()
-            }
+            mediaRecorderHelper = MediaRecorderHelper()
             mediaRecordSurface = mediaRecorderHelper.recorderSurface
         }
     }
 
 
+    private fun prepareMediaRecorderHelper() {
+        mediaRecorderHelper = MediaRecorderHelper()
+        val sdf = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS", Locale.CHINA)
+        mediaRecorderHelper.createRecordFile(File(context.getExternalFilesDir(Environment.DIRECTORY_MOVIES),
+                "REC_${sdf.format(Date())}.mp4"))
+        mediaRecorderHelper.prepareRecordVideo(videoSize = previewSize,
+                fps = previewFps.upper)
+        mediaRecordSurface = mediaRecorderHelper.inputSurface
+    }
+
+
     private lateinit var previewSize: Size
     private lateinit var previewFps: Range<Int>
+    private lateinit var targets: MutableList<Surface>
+    private lateinit var captureSession: CameraCaptureSession
+    private lateinit var captureRequest: CaptureRequest
+
+
 
     private fun createPreview(holder: SurfaceHolder) {
         camera2Helper.usingCameraInfo?.let { uCif ->
@@ -108,21 +118,15 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
             previewView.post {
                 lifecycleScope?.launch(Dispatchers.Main) {
                     val cameraDevice = camera2Helper.openCameraNew(cameraInfo = uCif)
-                    val targets = mutableListOf<Surface>()
-                    val previewSurface = previewView.holder.surface
+                    targets = mutableListOf()
+                    prepareMediaRecorderHelper()
+                    previewSurface = previewView.holder.surface
                     targets.add(previewSurface)
-                    val captureSession = camera2Helper.createCaptureSession(device = cameraDevice,
+                    targets.add(mediaRecordSurface)
+                    captureSession = camera2Helper.createCaptureSession(device = cameraDevice,
                             targets = targets, cameraHandler)
-                    lateinit var captureRequest: CaptureRequest
-                    captureRequest = if (captureMode == CAPTURE_PICTURE) {
-                        camera2Helper.createCaptureRequest(captureSession = captureSession,
-                                targets = targets)
-                    } else {
-//                        targets.add(mediaRecordSurface)
-                        camera2Helper.createRecordCaptureRequest(captureSession = captureSession,
-                                fpsRange = uCif.fpsRanges[0],
-                                targets = targets)
-                    }
+                    captureRequest = camera2Helper.createCaptureRequest(captureSession = captureSession,
+                            targets = targets)
                     captureSession.setRepeatingRequest(captureRequest,
                             object : CameraCaptureSession.CaptureCallback() {
                             }, cameraHandler)
@@ -131,16 +135,19 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
         }
     }
 
-    private fun destroyPreview() {
-        camera2Helper.closeCamera()
-        cameraThread.quitSafely()
-    }
-
     /**
      * 开启预览
      */
     fun startPreview() {
+        cameraThread = HandlerThread("cameraThread")
+        cameraThread.start()
+        cameraHandler = Handler(cameraThread.looper)
         addView(previewView)
+    }
+
+    private fun destroyPreview() {
+        camera2Helper.closeCamera()
+        cameraThread.quitSafely()
     }
 
     class OutputFileResults internal constructor(
@@ -163,21 +170,23 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
                     cause: Throwable?)
     }
 
+
+
     /**
      * 开始捕捉视频
      */
     fun startCapturingVideo() {
-        captureMode = CAPTURE_VIDEO
+//        captureMode = CAPTURE_VIDEO
 //        stopPreview()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            mediaRecorderHelper = MediaRecorderHelper()
-            val sdf = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss_SSS", Locale.CHINA)
-            mediaRecorderHelper.createRecordFile(File(context.getExternalFilesDir(Environment.DIRECTORY_MOVIES),
-                    "REC_${sdf.format(Date())}.mp4"))
-            mediaRecorderHelper.prepareRecordVideo(videoSize = previewSize,
-                    fps = previewFps.upper)
-            mediaRecordSurface = mediaRecorderHelper.recorderSurface
-//            startPreview()
+//        SystemClock.sleep(1000)
+//        startPreview()
+        camera2Helper.usingCameraInfo?.let { uCif ->
+            captureRequest = camera2Helper.createRecordCaptureRequest(captureSession = captureSession,
+                    fpsRange = uCif.fpsRanges[uCif.fpsRanges.size - 1],
+                    targets = targets)
+            captureSession.setRepeatingRequest(captureRequest,
+                    object : CameraCaptureSession.CaptureCallback() {
+                    }, cameraHandler)
             mediaRecorderHelper.startRecording()
         }
     }
@@ -185,9 +194,8 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
     /**
      * 停止捕捉视频
      */
-    @RequiresApi(Build.VERSION_CODES.M)
     fun stopCaptureVideo() {
-//        mediaRecorderHelper.stopRecording()
+        mediaRecorderHelper.stopRecording()
     }
 
     fun resumePreview() {}

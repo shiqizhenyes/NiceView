@@ -1,6 +1,8 @@
 package me.nice.camera
 
 import android.media.MediaCodec
+import android.media.MediaCodecInfo
+import android.media.MediaFormat
 import android.media.MediaRecorder
 import android.os.Build
 import android.util.Log
@@ -9,7 +11,6 @@ import android.view.Surface
 import androidx.annotation.RequiresApi
 import java.io.File
 
-@RequiresApi(Build.VERSION_CODES.M)
 open class MediaRecorderHelper {
 
     private val tag = MediaRecorderHelper::class.simpleName
@@ -20,15 +21,6 @@ open class MediaRecorderHelper {
 
     private val mediaRecorder  = MediaRecorder()
 
-    val recorderSurface: Surface by lazy {
-        val surface = MediaCodec.createPersistentInputSurface()
-//        val surface = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            MediaCodec.createPersistentInputSurface()
-//        } else {
-//            null
-//        }
-        surface
-    }
 
     private lateinit var recordFile : File
 
@@ -44,8 +36,31 @@ open class MediaRecorderHelper {
     var fps : Int = 30
     var videoSize: Size? = null
 
+    val recorderSurface: Surface by lazy {
+        val surface = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            MediaCodec.createPersistentInputSurface()
+        } else {
+            val videoEncoder = MediaCodec.createEncoderByType("video/avc")
+            val videoFormat = MediaFormat.createVideoFormat("video/avc", this.videoSize!!.width,
+                    this.videoSize!!.height)
+            videoFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT,
+                    MediaCodecInfo.CodecCapabilities.COLOR_FormatSurface)
+            videoFormat.setInteger(MediaFormat.KEY_BIT_RATE, 125000)
+            videoFormat.setInteger(MediaFormat.KEY_FRAME_RATE, this.fps)
+            videoFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 5)
+            // BITRATE_MODE_CBR 恒定码率
+            videoFormat.setInteger(MediaFormat.KEY_BITRATE_MODE, MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CBR)
+            videoFormat.setInteger(MediaFormat.KEY_COMPLEXITY, MediaCodecInfo.EncoderCapabilities.BITRATE_MODE_CBR)
+            videoEncoder.configure(videoFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE)
+            videoEncoder.createInputSurface()
+        }
+        surface
+    }
+
+    lateinit var inputSurface: Surface
+
     /**
-     *
+     * 准备录制视频
      */
     fun prepareRecordVideo(videoSize: Size, fps: Int = 30) {
         this.videoSize = videoSize
@@ -68,13 +83,15 @@ open class MediaRecorderHelper {
             setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 setInputSurface(recorderSurface)
-            }
+            } else {}
+            inputSurface = recorderSurface
+//            release()
             prepare()
-            release()
         }
     }
 
     fun startRecording() {
+//        mediaRecorder.prepare()
 //        mediaRecorder.reset()
         mediaRecorder.start()
     }
@@ -90,8 +107,8 @@ open class MediaRecorderHelper {
     }
 
     fun stopRecording() {
-        mediaRecorder.reset()
-        mediaRecorder.release()
+//        mediaRecorder.reset()
+//        mediaRecorder.release()
         mediaRecorder.stop()
     }
 
