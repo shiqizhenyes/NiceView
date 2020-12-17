@@ -37,15 +37,15 @@ class NiceCameraActivity : AppCompatActivity() {
         binding.ncCamera2PreviewView.lifecycleScope = lifecycleScope
         binding.ncCamera2PreviewView.startPreview()
         binding.ncButton.setOnClickListener {
-            if (recording) {
-                recording = false
-                binding.ncButton.text = getText(R.string.recording)
-                binding.ncCamera2PreviewView.stopCaptureVideo()
-            } else {
-                recording = true
-                binding.ncButton.text = getText(R.string.stop)
-                binding.ncCamera2PreviewView.startCapturingVideo()
-            }
+//            if (recording) {
+//                recording = false
+////                binding.ncButton.text = getText(R.string.recording)
+//                binding.ncCamera2PreviewView.stopCaptureVideo()
+//            } else {
+//                recording = true
+////                binding.ncButton.text = getText(R.string.stop)
+//                binding.ncCamera2PreviewView.startCapturingVideo()
+//            }
         }
     }
 

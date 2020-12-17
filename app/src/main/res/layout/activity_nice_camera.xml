@@ -12,17 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <net.qiujuer.genius.ui.widget.Button
+    <me.nice.view.NiceCameraButton
         android:id="@+id/ncButton"
-        android:background="@color/white"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:padding="20dp"
-        android:text="@string/recording"
-        android:textAlignment="center"/>
+        android:layout_marginBottom="20dp"
+        app:nRadius="20dp"
+        app:nBorderColor="@color/md_white"
+        app:nBorderSize="4dp"
+        app:nButtonColor="@color/md_white" />
 
 </RelativeLayout>

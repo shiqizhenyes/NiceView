@@ -28,7 +28,7 @@ import java.util.*
 /**
  *
  */
-class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGroup(context, attrs) {
+class Camera2PreviewView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null): ViewGroup(context, attrs) {
 
     private val tag = Camera2PreviewView::class.simpleName
 
@@ -108,7 +108,9 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
     private lateinit var captureRequest: CaptureRequest
 
 
-
+    /**
+     * 创建预览
+     */
     private fun createPreview(holder: SurfaceHolder) {
         camera2Helper.usingCameraInfo?.let { uCif ->
             previewSize = getPreviewOutputSize(display = previewView.display,
@@ -145,6 +147,9 @@ class Camera2PreviewView(context: Context, attrs: AttributeSet? = null): ViewGro
         addView(previewView)
     }
 
+    /**
+     * 销毁预览
+     */
     private fun destroyPreview() {
         camera2Helper.closeCamera()
         cameraThread.quitSafely()

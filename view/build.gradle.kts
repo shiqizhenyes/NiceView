@@ -59,6 +59,8 @@ dependencies {
     implementation("androidx.core:core:1.3.2")
     implementation("androidx.interpolator:interpolator:1.0.0")
     implementation ("androidx.appcompat:appcompat:1.2.0")
+    implementation ("androidx.annotation:annotation:1.1.0")
+
 //    implementation("com.android.support:design:${rootProject.extra["supportVersion"]}")
 }
 
